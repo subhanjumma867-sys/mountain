@@ -1,0 +1,3378 @@
+/**
+ * Alpine Ascents - Custom Stylesheet & Design System
+ * Dynamic Multi-Theme System:
+ * 1. Sunset Alpenglow (Default: Warm Golden Summit & Twilight Obsidian)
+ * 2. Snow Peak Light (Crisp Modern Daylight & Alpine Azure)
+ * 3. Alpine Evergreen (Deep Spruce Forest & Emerald Valley)
+ * 4. Glacier Dark (Classic Arctic Blue & Midnight Slate)
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+/* Default Theme: Sunset Alpenglow */
+:root,
+[data-theme="sunset"] {
+  --alpine-bg-dark: #0e0915;
+  --alpine-bg-card: #181124;
+  --alpine-bg-surface: #241933;
+  --alpine-primary: #f59e0b;
+  --alpine-primary-dark: #d97706;
+  --alpine-accent-gold: #fb7185;
+  --alpine-text-light: #fff7ed;
+  --alpine-text-muted: #cbd5e1;
+  --alpine-border: rgba(245, 158, 11, 0.22);
+  --alpine-glass-bg: rgba(14, 9, 21, 0.90);
+  --alpine-glass-scrolled: rgba(14, 9, 21, 0.98);
+  --alpine-font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --alpine-font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --ticker-height: 44px;
+  --alpine-btn-close-filter: invert(1);
+  --alpine-hero-gradient: linear-gradient(135deg, #ffffff 25%, #fbbf24 65%, #f97316 100%);
+  --alpine-theme-glow: 0 0 25px rgba(245, 158, 11, 0.35);
+}
+
+/* Theme 2: Glacier Dark */
+[data-theme="glacier"] {
+  --alpine-bg-dark: #070d18;
+  --alpine-bg-card: #0f1c30;
+  --alpine-bg-surface: #14243d;
+  --alpine-primary: #38bdf8;
+  --alpine-primary-dark: #0284c7;
+  --alpine-accent-gold: #f59e0b;
+  --alpine-text-light: #f8fafc;
+  --alpine-text-muted: #94a3b8;
+  --alpine-border: rgba(56, 189, 248, 0.16);
+  --alpine-glass-bg: rgba(7, 13, 24, 0.88);
+  --alpine-glass-scrolled: rgba(7, 13, 24, 0.98);
+  --alpine-font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --alpine-font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --ticker-height: 44px;
+  --alpine-btn-close-filter: invert(1);
+  --alpine-hero-gradient: linear-gradient(135deg, #ffffff 30%, #38bdf8 80%, #0284c7 100%);
+  --alpine-theme-glow: 0 0 25px rgba(56, 189, 248, 0.35);
+}
+
+/* Theme 3: Alpine Evergreen */
+[data-theme="forest"] {
+  --alpine-bg-dark: #06140e;
+  --alpine-bg-card: #0c2218;
+  --alpine-bg-surface: #143324;
+  --alpine-primary: #10b981;
+  --alpine-primary-dark: #059669;
+  --alpine-accent-gold: #f59e0b;
+  --alpine-text-light: #f0fdf4;
+  --alpine-text-muted: #94a3b8;
+  --alpine-border: rgba(16, 185, 129, 0.22);
+  --alpine-glass-bg: rgba(6, 20, 14, 0.90);
+  --alpine-glass-scrolled: rgba(6, 20, 14, 0.98);
+  --alpine-font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --alpine-font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --ticker-height: 44px;
+  --alpine-btn-close-filter: invert(1);
+  --alpine-hero-gradient: linear-gradient(135deg, #ffffff 25%, #34d399 65%, #059669 100%);
+  --alpine-theme-glow: 0 0 25px rgba(16, 185, 129, 0.35);
+}
+
+/* Theme 4: Snow Peak Light Mode */
+[data-theme="snow"] {
+  --alpine-bg-dark: #f8fafc;
+  --alpine-bg-card: #ffffff;
+  --alpine-bg-surface: #f1f5f9;
+  --alpine-primary: #0284c7;
+  --alpine-primary-dark: #0369a1;
+  --alpine-accent-gold: #d97706;
+  --alpine-text-light: #0f172a;
+  --alpine-text-muted: #64748b;
+  --alpine-border: rgba(2, 132, 199, 0.18);
+  --alpine-glass-bg: rgba(255, 255, 255, 0.94);
+  --alpine-glass-scrolled: rgba(255, 255, 255, 0.98);
+  --alpine-font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --alpine-font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --ticker-height: 44px;
+  --alpine-btn-close-filter: none;
+  --alpine-hero-gradient: linear-gradient(135deg, #ffffff 30%, #38bdf8 80%, #0284c7 100%);
+  --alpine-theme-glow: 0 0 25px rgba(2, 132, 199, 0.25);
+}
+
+/* Global Reset & Base */
+body {
+  font-family: var(--alpine-font-body);
+  background-color: var(--alpine-bg-dark);
+  color: var(--alpine-text-light);
+  line-height: 1.65;
+  padding-bottom: var(--ticker-height);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--alpine-font-heading);
+  letter-spacing: -0.02em;
+}
+
+a {
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+/* Custom Text Opacity Utilities (used throughout — must be defined here) */
+.text-white-80 {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+.text-white-70 {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+/* Note: Bootstrap provides .text-white-50 natively, but we reinforce it */
+.text-white-50 {
+  color: rgba(255, 255, 255, 0.60) !important;
+}
+
+/* Theme-aware text utilities — readable on both dark & Snow Peak light themes */
+.text-light-heading {
+  color: var(--alpine-text-light) !important;
+}
+.text-light-body {
+  color: var(--alpine-text-muted) !important;
+}
+
+/* Override for Snow Peak so headings are dark on white background */
+[data-theme="snow"] .text-light-heading {
+  color: #0f172a !important;
+}
+[data-theme="snow"] .text-light-body {
+  color: #475569 !important;
+}
+
+/* ============================================================
+   SNOW PEAK LIGHT THEME — Global White Text Overrides
+   All "text-white*" classes become dark/readable on white bg
+   ============================================================ */
+[data-theme="snow"] .text-white {
+  color: #0f172a !important;
+}
+[data-theme="snow"] .text-white-80 {
+  color: #1e293b !important;
+}
+[data-theme="snow"] .text-white-70 {
+  color: #334155 !important;
+}
+[data-theme="snow"] .text-white-50 {
+  color: #64748b !important;
+}
+
+/* Card & section body text in snow theme */
+[data-theme="snow"] .card-alpine,
+[data-theme="snow"] .card {
+  background: #ffffff !important;
+  border-color: rgba(2, 132, 199, 0.15) !important;
+}
+[data-theme="snow"] .card p,
+[data-theme="snow"] .card small,
+[data-theme="snow"] .card span:not(.badge):not(.fa-solid):not(.fa-brands),
+[data-theme="snow"] .card-body p,
+[data-theme="snow"] .card-body small {
+  color: #334155 !important;
+}
+[data-theme="snow"] .card h1,
+[data-theme="snow"] .card h2,
+[data-theme="snow"] .card h3,
+[data-theme="snow"] .card h4,
+[data-theme="snow"] .card h5,
+[data-theme="snow"] .card h6 {
+  color: #0f172a !important;
+}
+
+/* SPA view body text — exclude hero, banners, image overlays, and gallery elements */
+[data-theme="snow"] .spa-view p:not(.hero-section *):not(.view-header-banner *):not(.position-absolute *):not(.gallery-overlay *):not(.gallery-location):not([class*="overlay"] *),
+[data-theme="snow"] .spa-view small:not(.hero-section *):not(.view-header-banner *):not(.position-absolute *):not(.gallery-overlay *):not(.gallery-location):not(.gallery-action-hint):not([class*="overlay"] *),
+[data-theme="snow"] .spa-view li:not(.hero-section *):not(.view-header-banner *):not(.position-absolute *) {
+  color: #334155 !important;
+}
+[data-theme="snow"] .spa-view h1:not(.hero-section *):not(.hero-title):not(.view-header-banner *):not(.position-absolute *):not(.gallery-title):not([class*="overlay"] *),
+[data-theme="snow"] .spa-view h2:not(.hero-section *):not(.view-header-banner *):not(.position-absolute *):not(.gallery-title):not([class*="overlay"] *),
+[data-theme="snow"] .spa-view h3:not(.hero-section *):not(.view-header-banner *):not(.position-absolute *):not(.gallery-title):not([class*="overlay"] *),
+[data-theme="snow"] .spa-view h4:not(.hero-section *):not(.view-header-banner *):not(.position-absolute *):not(.gallery-title):not([class*="overlay"] *),
+[data-theme="snow"] .spa-view h5:not(.hero-section *):not(.view-header-banner *):not(.position-absolute *):not(.gallery-title):not([class*="overlay"] *),
+[data-theme="snow"] .spa-view h6:not(.hero-section *):not(.view-header-banner *):not(.position-absolute *):not(.gallery-title):not([class*="overlay"] *) {
+  color: #0f172a !important;
+}
+
+/* Gallery overlay text is ALWAYS white — on dark images */
+[data-theme="snow"] .gallery-title,
+[data-theme="snow"] .gallery-location,
+[data-theme="snow"] .gallery-action-hint,
+[data-theme="snow"] .gallery-overlay h6,
+[data-theme="snow"] .gallery-overlay small,
+[data-theme="snow"] .gallery-overlay span,
+[data-theme="snow"] .gallery-overlay i {
+  color: #ffffff !important;
+}
+
+/* View header banner text (breadcrumb + title) — always white on dark photo banner */
+[data-theme="snow"] .view-breadcrumb,
+[data-theme="snow"] .view-breadcrumb a,
+[data-theme="snow"] .view-breadcrumb span,
+[data-theme="snow"] .view-breadcrumb i {
+  color: #ffffff !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* list-group items used as descriptions */
+[data-theme="snow"] .list-group-item {
+  color: #334155 !important;
+  background: transparent !important;
+  border-color: rgba(2, 132, 199, 0.15) !important;
+}
+
+/* Timeline, technique, shelter, hazard cards */
+[data-theme="snow"] .timeline-card p,
+[data-theme="snow"] .timeline-card small {
+  color: #334155 !important;
+}
+
+/* Records table */
+[data-theme="snow"] .table,
+[data-theme="snow"] .table td,
+[data-theme="snow"] .table th {
+  color: #1e293b !important;
+}
+
+/* Booking, forms */
+[data-theme="snow"] .form-control,
+[data-theme="snow"] .form-select,
+[data-theme="snow"] .form-label {
+  color: #0f172a !important;
+  background-color: #f8fafc !important;
+  border-color: rgba(2, 132, 199, 0.25) !important;
+}
+[data-theme="snow"] .form-control::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* Dropdown items in navbar */
+[data-theme="snow"] .dropdown-item-alpine {
+  color: #1e293b !important;
+}
+[data-theme="snow"] .dropdown-item-alpine:hover {
+  background: rgba(2, 132, 199, 0.08) !important;
+  color: #0284c7 !important;
+}
+
+/* Inline stat blocks (hero area) */
+[data-theme="snow"] .stat-block-number,
+[data-theme="snow"] .hero-stat-number {
+  color: #0284c7 !important;
+}
+[data-theme="snow"] .stat-block-label {
+  color: #64748b !important;
+}
+
+/* ============================================================
+   SNOW PEAK — Gallery & Image Overlay Exceptions
+   HIGH-SPECIFICITY: Must beat [data-theme="snow"] .spa-view h6
+   Gallery overlay text ALWAYS stays white — it's on dark images.
+   ============================================================ */
+
+/* Force all text inside gallery overlay white — extra specificity */
+[data-theme="snow"] .gallery-card .gallery-overlay h1,
+[data-theme="snow"] .gallery-card .gallery-overlay h2,
+[data-theme="snow"] .gallery-card .gallery-overlay h3,
+[data-theme="snow"] .gallery-card .gallery-overlay h4,
+[data-theme="snow"] .gallery-card .gallery-overlay h5,
+[data-theme="snow"] .gallery-card .gallery-overlay h6 {
+  color: #ffffff !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.95), 0 2px 14px rgba(0,0,0,0.85) !important;
+}
+
+[data-theme="snow"] .gallery-card .gallery-overlay p,
+[data-theme="snow"] .gallery-card .gallery-overlay small,
+[data-theme="snow"] .gallery-card .gallery-overlay span,
+[data-theme="snow"] .gallery-card .gallery-overlay div {
+  color: #ffffff !important;
+}
+
+[data-theme="snow"] .gallery-card .gallery-overlay .gallery-title {
+  color: #ffffff !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.95), 0 2px 14px rgba(0,0,0,0.85) !important;
+}
+
+[data-theme="snow"] .gallery-card .gallery-overlay .gallery-location {
+  color: rgba(255, 255, 255, 0.95) !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.9) !important;
+}
+
+[data-theme="snow"] .gallery-card .gallery-overlay .gallery-action-hint {
+  color: var(--alpine-primary) !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8) !important;
+}
+
+/* Badge pill & zoom circle — always white on dark image */
+[data-theme="snow"] .gallery-card .gallery-badge-pill {
+  color: #ffffff !important;
+}
+[data-theme="snow"] .gallery-card .gallery-zoom-circle {
+  color: #ffffff !important;
+}
+
+/* Max-Width Utility */
+.max-w-700 {
+  max-width: 700px;
+}
+
+
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: var(--alpine-bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--alpine-bg-surface);
+  border-radius: 5px;
+  border: 1px solid var(--alpine-border);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--alpine-primary);
+}
+
+/* ============================================================
+   SPA VIEW CONTAINERS & TRANSITIONS (NO MORE CLUTTERED MIXED STACK!)
+   ============================================================ */
+.spa-view {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  padding-top: 76px; /* Offset for straightline top navbar */
+  padding-bottom: calc(var(--ticker-height) + 50px); /* Offset for bottom live telemetry ticker */
+  min-height: calc(100vh - var(--ticker-height));
+}
+
+.spa-view.active-view {
+  display: block;
+  opacity: 1;
+  animation: viewFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes viewFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dedicated View Header Banner */
+.view-header-banner {
+  background: linear-gradient(180deg, var(--alpine-bg-surface) 0%, var(--alpine-bg-dark) 100%);
+  border-bottom: 1px solid var(--alpine-border);
+  padding: 60px 0 40px;
+  margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.view-header-banner .container {
+  position: relative;
+  z-index: 2;
+}
+
+.view-header-banner-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  opacity: 0.3;
+  z-index: 0;
+  transition: opacity 0.4s ease;
+}
+
+.view-header-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, var(--alpine-bg-dark) 0%, transparent 50%, var(--alpine-bg-dark) 100%),
+              linear-gradient(to top, var(--alpine-bg-dark) 0%, transparent 60%);
+  z-index: 1;
+}
+
+/* Page-specific header images */
+#view-history .view-header-banner-bg {
+  background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2000&q=80');
+}
+#view-disciplines .view-header-banner-bg {
+  background-image: url('https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=2000&q=80');
+}
+#view-records .view-header-banner-bg {
+  background-image: url('https://images.unsplash.com/photo-1522163182402-834f871fd851?auto=format&fit=crop&w=2000&q=80');
+}
+#view-map .view-header-banner-bg {
+  background-image: url('https://images.unsplash.com/photo-1536431311719-398b6704d4cc?auto=format&fit=crop&w=2000&q=80');
+}
+#view-camps .view-header-banner-bg {
+  background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=2000&q=80');
+}
+#view-gallery .view-header-banner-bg {
+  background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=2000&q=80');
+}
+#view-safety .view-header-banner-bg {
+  background-image: url('https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=2000&q=80');
+}
+#view-booking .view-header-banner-bg {
+  background-image: url('https://images.unsplash.com/photo-1544198365-f5d60b6d8190?auto=format&fit=crop&w=2000&q=80');
+}
+
+.view-breadcrumb {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--alpine-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.view-breadcrumb a {
+  color: var(--alpine-text-muted);
+}
+.view-breadcrumb a:hover {
+  color: var(--alpine-text-light);
+}
+
+/* ============================================================
+   TOP NAVBAR & STRAIGHTLINE EDGE-TO-EDGE HEADER
+   ============================================================ */
+.navbar-alpine-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1040;
+  padding: 0;
+  margin: 0;
+  transition: all 0.3s ease;
+}
+
+.navbar-alpine-wrapper.wrapper-scrolled {
+  padding: 0;
+}
+
+.navbar-alpine {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  background: var(--alpine-glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid var(--alpine-border);
+  border-radius: 0 !important;
+  padding: 10px 0;
+  min-height: 70px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.navbar-alpine.navbar-scrolled {
+  background: var(--alpine-glass-scrolled);
+  border-bottom-color: var(--alpine-primary);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.65), var(--alpine-theme-glow);
+  padding: 8px 0;
+  min-height: 64px;
+}
+
+@media (max-width: 991.98px) {
+  .navbar-alpine-wrapper {
+    padding: 0;
+  }
+  .navbar-alpine {
+    border-radius: 0 !important;
+    margin: 0;
+    max-width: 100%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding: 10px 16px;
+  }
+  #navbarNav {
+    background: var(--alpine-bg-surface);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--alpine-border);
+    border-radius: 16px;
+    padding: 16px;
+    margin-top: 12px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+  }
+  .navbar-alpine .nav-link {
+    display: flex;
+    width: 100%;
+    padding: 10px 14px !important;
+    margin-bottom: 4px;
+  }
+  .navbar-toggler {
+    border: 1px solid var(--alpine-border) !important;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .navbar-toggler:focus {
+    box-shadow: 0 0 0 3px var(--alpine-primary);
+  }
+}
+
+.navbar-brand {
+  font-family: var(--alpine-font-heading);
+  font-size: 1.12rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  transition: transform 0.25s ease;
+}
+
+.navbar-brand:hover {
+  transform: translateY(-1px);
+}
+
+/* Brand Logo Image */
+.brand-logo-img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--alpine-primary);
+  box-shadow: 0 0 14px var(--alpine-border);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+
+.navbar-brand:hover .brand-logo-img {
+  transform: rotate(6deg) scale(1.06);
+  box-shadow: 0 0 18px var(--alpine-primary);
+}
+
+/* Visitor Count Badge beside Logo Header */
+.visitor-counter-badge {
+  background: var(--alpine-bg-surface);
+  border: 1px solid var(--alpine-border);
+  backdrop-filter: blur(10px);
+  border-radius: 50rem;
+  padding: 5px 12px;
+  font-size: 0.76rem;
+  transition: all 0.25s ease;
+}
+
+.visitor-counter-badge:hover {
+  border-color: var(--alpine-primary);
+  box-shadow: var(--alpine-theme-glow);
+  transform: translateY(-1px);
+}
+
+/* Top Nav Links */
+.navbar-alpine .nav-link {
+  color: var(--alpine-text-muted) !important;
+  font-weight: 500;
+  font-size: 0.85rem;
+  padding: 6px 11px !important;
+  border-radius: 9999px;
+  margin: 0 1px;
+  cursor: pointer;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hover State */
+.navbar-alpine .nav-link:hover {
+  color: var(--alpine-primary) !important;
+  background: rgba(245, 158, 11, 0.12);
+  transform: translateY(-1px);
+}
+[data-theme="glacier"] .navbar-alpine .nav-link:hover {
+  background: rgba(56, 189, 248, 0.12);
+}
+[data-theme="forest"] .navbar-alpine .nav-link:hover {
+  background: rgba(16, 185, 129, 0.12);
+}
+[data-theme="snow"] .navbar-alpine .nav-link:hover {
+  background: rgba(2, 132, 199, 0.10);
+}
+
+/* Active State */
+.navbar-alpine .nav-link.active,
+.navbar-alpine .dropdown.has-active > .nav-link {
+  color: var(--alpine-bg-dark) !important;
+  background: var(--alpine-primary) !important;
+  font-weight: 700;
+  box-shadow: 0 2px 10px var(--alpine-border);
+}
+[data-theme="snow"] .navbar-alpine .nav-link.active,
+[data-theme="snow"] .navbar-alpine .dropdown.has-active > .nav-link {
+  color: #ffffff !important;
+}
+
+/* Rich Mega & Sub-Dropdown Menus */
+.dropdown-menu-alpine {
+  background: var(--alpine-bg-surface);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--alpine-border);
+  border-radius: 16px;
+  box-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  padding: 10px;
+  min-width: 300px;
+  animation: dropdownFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.dropdown-item-alpine {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  color: var(--alpine-text-light);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 2px;
+}
+
+.dropdown-item-alpine:hover {
+  background: rgba(245, 158, 11, 0.12);
+  transform: translateX(4px);
+}
+[data-theme="glacier"] .dropdown-item-alpine:hover {
+  background: rgba(56, 189, 248, 0.12);
+}
+[data-theme="forest"] .dropdown-item-alpine:hover {
+  background: rgba(16, 185, 129, 0.12);
+}
+[data-theme="snow"] .dropdown-item-alpine:hover {
+  background: rgba(2, 132, 199, 0.10);
+}
+
+.dropdown-item-alpine.active {
+  background: var(--alpine-primary);
+  color: var(--alpine-bg-dark) !important;
+}
+[data-theme="snow"] .dropdown-item-alpine.active {
+  color: #ffffff !important;
+}
+
+.dropdown-item-alpine .item-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--alpine-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.dropdown-item-alpine:hover .item-icon {
+  transform: scale(1.1);
+}
+
+.dropdown-item-alpine.active .item-icon {
+  background: rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+}
+
+.dropdown-item-alpine .item-title {
+  font-weight: 600;
+  font-size: 0.88rem;
+  line-height: 1.25;
+  display: block;
+}
+
+.dropdown-item-alpine .item-desc {
+  font-size: 0.72rem;
+  color: var(--alpine-text-muted);
+  line-height: 1.35;
+  margin-top: 2px;
+  display: block;
+}
+
+.dropdown-item-alpine.active .item-desc {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Quick Search Button in Navbar */
+.btn-navbar-search {
+  background: var(--alpine-bg-surface);
+  border: 1px solid var(--alpine-border);
+  color: var(--alpine-text-muted);
+  border-radius: 9999px;
+  padding: 6px 14px;
+  font-size: 0.82rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.btn-navbar-search:hover {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: var(--alpine-primary);
+  color: var(--alpine-text-light);
+  box-shadow: 0 0 12px var(--alpine-border);
+  transform: translateY(-1px);
+}
+
+.navbar-kbd {
+  font-family: inherit;
+  font-size: 0.68rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--alpine-border);
+  border-radius: 4px;
+  padding: 1px 5px;
+  color: var(--alpine-text-muted);
+}
+
+/* ============================================================
+   HERO BANNER SECTION
+   ============================================================ */
+.hero-section {
+  position: relative;
+  min-height: 82vh;
+  display: flex;
+  align-items: center;
+  background: url('../images/hero-bg.jpg') center center / cover no-repeat;
+  background-attachment: fixed;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  border-radius: 0 0 28px 28px;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(7, 13, 24, 0.75) 0%,
+    rgba(7, 13, 24, 0.88) 60%,
+    var(--alpine-bg-dark) 100%
+  );
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(15, 28, 48, 0.85);
+  border: 1px solid var(--alpine-border);
+  backdrop-filter: blur(12px);
+  padding: 6px 16px;
+  border-radius: 50rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--alpine-primary);
+}
+
+.hero-title {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 900;
+  line-height: 1.15;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+}
+
+.hero-title .text-gradient-ice {
+  background: var(--alpine-hero-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 12px color-mix(in srgb, var(--alpine-primary) 60%, transparent))
+          drop-shadow(0 2px 8px color-mix(in srgb, var(--alpine-primary) 40%, transparent));
+}
+
+.hero-lead {
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  color: rgba(248, 250, 252, 0.88);
+  max-width: 760px;
+}
+
+.hero-stat-card {
+  background: rgba(15, 28, 48, 0.75);
+  border: 1px solid var(--alpine-border);
+  backdrop-filter: blur(14px);
+  border-radius: 16px;
+  padding: 14px 18px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.hero-stat-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--alpine-primary);
+}
+
+/* ============================================================
+   ACTIVITY HUB LAUNCHPAD CARDS (HOME PAGE)
+   ============================================================ */
+.activity-card {
+  background: var(--alpine-bg-card);
+  border: 1px solid var(--alpine-border);
+  border-radius: 20px;
+  padding: 24px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.activity-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--alpine-primary), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.activity-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--alpine-primary);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+  background: var(--alpine-bg-surface);
+}
+
+.activity-card:hover::before {
+  opacity: 1;
+}
+
+.activity-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--alpine-bg-surface);
+  color: var(--alpine-primary);
+  border: 1px solid var(--alpine-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+}
+
+.activity-card:hover .activity-icon-wrap {
+  background: var(--alpine-primary);
+  color: var(--alpine-bg-dark);
+  transform: scale(1.08);
+}
+
+/* ============================================================
+   SUB-NAVIGATION TABS (CLEAN DISCIPLINE SWITCHER)
+   ============================================================ */
+.sub-nav-pills {
+  background: var(--alpine-bg-card);
+  padding: 6px;
+  border-radius: 50rem;
+  border: 1px solid var(--alpine-border);
+  display: inline-flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.sub-nav-pill-btn {
+  background: transparent;
+  color: var(--alpine-text-muted);
+  border: none;
+  padding: 8px 18px;
+  border-radius: 50rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.sub-nav-pill-btn:hover {
+  color: var(--alpine-text-light);
+  background: rgba(245, 158, 11, 0.12);
+}
+[data-theme="glacier"] .sub-nav-pill-btn:hover { background: rgba(56, 189, 248, 0.12); }
+[data-theme="forest"] .sub-nav-pill-btn:hover { background: rgba(16, 185, 129, 0.12); }
+[data-theme="snow"] .sub-nav-pill-btn:hover { background: rgba(2, 132, 199, 0.10); }
+
+.sub-nav-pill-btn.active {
+  background: var(--alpine-primary);
+  color: var(--alpine-bg-dark);
+  box-shadow: 0 4px 12px var(--alpine-border);
+}
+[data-theme="snow"] .sub-nav-pill-btn.active {
+  color: #ffffff !important;
+}
+
+/* ============================================================
+   CARD SURFACES & COMPONENT STYLING
+   ============================================================ */
+.section-tag {
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--alpine-primary);
+  display: inline-block;
+  margin-bottom: 0.4rem;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-weight: 800;
+  color: var(--alpine-text-light);
+}
+
+.card-alpine {
+  background: var(--alpine-bg-card);
+  border: 1px solid var(--alpine-border);
+  border-radius: 20px;
+  color: var(--alpine-text-light);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-alpine:hover {
+  border-color: var(--alpine-primary);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  transform: translateY(-4px);
+}
+
+/* Style Cards */
+.style-card {
+  background: var(--alpine-bg-card) !important;
+  border: 1px solid var(--alpine-border) !important;
+  transition: all 0.3s ease;
+}
+
+.style-card:hover {
+  border-color: var(--alpine-primary) !important;
+  transform: translateY(-5px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.5);
+}
+
+.style-card .card-title,
+.style-card h5,
+.style-card .fw-bold {
+  color: var(--alpine-text-light) !important;
+}
+
+.style-card p,
+.style-card .text-secondary {
+  color: var(--alpine-text-muted) !important;
+}
+
+/* Techniques Accordion */
+.accordion-alpine .accordion-item {
+  background: var(--alpine-bg-card);
+  border: 1px solid var(--alpine-border);
+  overflow: hidden;
+}
+
+.accordion-alpine .accordion-button {
+  background: var(--alpine-bg-card);
+  color: var(--alpine-text-light) !important;
+  font-weight: 700;
+  border: none;
+  box-shadow: none;
+}
+
+.accordion-alpine .accordion-button:not(.collapsed) {
+  background: var(--alpine-bg-surface);
+  color: var(--alpine-primary) !important;
+  border-bottom: 1px solid var(--alpine-border);
+}
+
+.accordion-alpine .accordion-body {
+  background: var(--alpine-bg-card);
+  color: var(--alpine-text-muted);
+}
+
+.accordion-alpine .accordion-button::after {
+  filter: var(--alpine-btn-close-filter);
+}
+
+/* Shelters Cards */
+.shelter-card {
+  background: var(--alpine-bg-card) !important;
+  border: 1px solid var(--alpine-border) !important;
+}
+
+.shelter-card h5,
+.shelter-card .text-dark {
+  color: var(--alpine-text-light) !important;
+}
+
+.shelter-card p,
+.shelter-card .text-secondary {
+  color: var(--alpine-text-muted) !important;
+}
+
+/* Hazards Cards */
+.hazard-card {
+  background: var(--alpine-bg-card) !important;
+  border: 1px solid var(--alpine-border) !important;
+  transition: all 0.3s ease;
+}
+
+.hazard-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.5);
+}
+
+.hazard-card h5,
+.hazard-card .text-dark {
+  color: var(--alpine-text-light) !important;
+}
+
+.hazard-card p,
+.hazard-card .text-secondary {
+  color: var(--alpine-text-muted) !important;
+}
+
+.hazard-card .bg-light {
+  background: var(--alpine-bg-surface) !important;
+  border: 1px solid var(--alpine-border) !important;
+}
+
+/* History Timeline */
+.timeline-container {
+  position: relative;
+  padding: 30px 0;
+}
+
+.timeline-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  background: linear-gradient(180deg, var(--alpine-primary), var(--alpine-border));
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  width: 50%;
+  padding: 0 35px;
+}
+
+.timeline-left {
+  left: 0;
+  text-align: right;
+}
+
+.timeline-right {
+  left: 50%;
+  text-align: left;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 24px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--alpine-primary);
+  color: var(--alpine-bg-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  border: 3px solid var(--alpine-bg-dark);
+  z-index: 2;
+}
+
+.timeline-left .timeline-dot {
+  right: -19px;
+}
+
+.timeline-right .timeline-dot {
+  left: -19px;
+}
+
+.timeline-card {
+  background: var(--alpine-bg-card) !important;
+  border: 1px solid var(--alpine-border) !important;
+  color: var(--alpine-text-light) !important;
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+.timeline-card:hover {
+  border-color: var(--alpine-primary) !important;
+  transform: translateY(-4px);
+}
+
+.timeline-card h5 {
+  color: var(--alpine-text-light) !important;
+}
+
+.timeline-card p {
+  color: var(--alpine-text-muted) !important;
+}
+
+@media (max-width: 768px) {
+  .timeline-container::before {
+    left: 20px;
+  }
+  .timeline-item {
+    width: 100%;
+    left: 0 !important;
+    padding-left: 55px;
+    padding-right: 15px;
+    text-align: left;
+  }
+  .timeline-left .timeline-dot,
+  .timeline-right .timeline-dot {
+    left: 1px;
+    right: auto;
+  }
+}
+
+/* ============================================================
+   MAP & CLUBS DIRECTORY
+   ============================================================ */
+#mountaineering-map {
+  width: 100%;
+  height: 520px;
+  border-radius: 20px;
+  border: 1px solid var(--alpine-border);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.custom-alpine-pin .marker-pin {
+  width: 32px;
+  height: 32px;
+  border-radius: 50% 50% 50% 0;
+  background: var(--alpine-primary);
+  transform: rotate(-45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.custom-alpine-pin .marker-pin.marker-hq {
+  background: var(--alpine-accent-gold);
+}
+
+.custom-alpine-pin .marker-pin i {
+  transform: rotate(45deg);
+  color: #070d18;
+  font-size: 14px;
+}
+
+.alpine-map-popup {
+  font-family: var(--alpine-font-body);
+  color: #0f1c30;
+  min-width: 200px;
+}
+
+.alpine-map-popup .popup-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #0284c7;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.alpine-map-popup .popup-title {
+  font-weight: 800;
+  margin-bottom: 2px;
+  font-size: 0.95rem;
+}
+
+.alpine-map-popup .popup-location {
+  font-size: 0.78rem;
+  color: #64748b;
+  margin-bottom: 6px;
+}
+
+.alpine-map-popup .popup-desc {
+  font-size: 0.8rem;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+.club-card {
+  background: var(--alpine-bg-card) !important;
+  border: 1px solid var(--alpine-border) !important;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.club-card:hover {
+  border-color: var(--alpine-primary) !important;
+  background: var(--alpine-bg-surface) !important;
+  transform: translateX(4px);
+}
+
+.club-card .card-title,
+.club-card .text-dark {
+  color: var(--alpine-text-light) !important;
+}
+
+.club-card .text-secondary,
+.club-card .text-muted {
+  color: var(--alpine-text-muted) !important;
+}
+
+/* ============================================================
+   RECORDS & MILESTONES TABLE
+   ============================================================ */
+.table-alpine-wrap {
+  border-radius: 16px;
+  border: 1px solid var(--alpine-border);
+  overflow: hidden;
+  background: var(--alpine-bg-card);
+}
+
+.table-alpine {
+  margin-bottom: 0;
+  color: var(--alpine-text-light);
+}
+
+.table-alpine thead th {
+  background: var(--alpine-bg-surface);
+  color: var(--alpine-text-light);
+  font-weight: 700;
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--alpine-border);
+  padding: 14px 18px;
+}
+
+.table-alpine tbody td {
+  background: transparent;
+  color: var(--alpine-text-light);
+  border-bottom: 1px solid var(--alpine-border);
+  padding: 14px 18px;
+  vertical-align: middle;
+}
+
+.table-alpine tbody tr:hover td {
+  background: rgba(245, 158, 11, 0.06);
+}
+[data-theme="glacier"] .table-alpine tbody tr:hover td { background: rgba(56, 189, 248, 0.06); }
+[data-theme="forest"] .table-alpine tbody tr:hover td { background: rgba(16, 185, 129, 0.06); }
+[data-theme="snow"] .table-alpine tbody tr:hover td { background: rgba(2, 132, 199, 0.06); }
+
+/* ============================================================
+   EXPEDITIONS CATALOG & BOOKING ENGINE
+   ============================================================ */
+.expedition-card {
+  background: var(--alpine-bg-card) !important;
+  border: 1px solid var(--alpine-border) !important;
+  transition: all 0.3s ease;
+}
+
+.expedition-card:hover {
+  border-color: var(--alpine-primary) !important;
+  transform: translateY(-5px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
+}
+
+.expedition-card h5,
+.expedition-card .text-dark {
+  color: var(--alpine-text-light) !important;
+}
+
+.expedition-card p,
+.expedition-card .text-secondary {
+  color: var(--alpine-text-muted) !important;
+}
+
+.booking-box-container {
+  background: var(--alpine-bg-card);
+  border: 1px solid var(--alpine-border);
+  border-radius: 24px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+}
+
+.form-control-alpine,
+.form-select-alpine {
+  background-color: var(--alpine-bg-surface) !important;
+  border: 1px solid var(--alpine-border) !important;
+  color: var(--alpine-text-light) !important;
+  border-radius: 12px;
+  padding: 10px 16px;
+}
+
+.form-control-alpine:focus,
+.form-select-alpine:focus {
+  border-color: var(--alpine-primary) !important;
+  box-shadow: 0 0 0 3px var(--alpine-border) !important;
+}
+
+.form-control-alpine::placeholder {
+  color: var(--alpine-text-muted);
+}
+
+/* Success Stories */
+.story-card {
+  background: var(--alpine-bg-card) !important;
+  border: 1px solid var(--alpine-border) !important;
+}
+
+.story-card h5,
+.story-card .text-dark {
+  color: var(--alpine-text-light) !important;
+}
+
+.story-card p,
+.story-card .text-secondary {
+  color: var(--alpine-text-muted) !important;
+}
+
+.story-card .story-quote-box {
+  background: var(--alpine-bg-surface) !important;
+  border-left: 3px solid var(--alpine-accent-gold);
+  color: var(--alpine-text-light) !important;
+}
+
+/* Innovations Cards */
+.innovation-card {
+  background: var(--alpine-bg-card) !important;
+  border: 1px solid var(--alpine-border) !important;
+  transition: all 0.3s ease;
+}
+
+.innovation-card:hover {
+  border-color: var(--alpine-primary) !important;
+  transform: translateY(-4px);
+}
+
+.innovation-card h6,
+.innovation-card .text-dark {
+  color: var(--alpine-text-light) !important;
+}
+
+.innovation-card p,
+.innovation-card .text-secondary {
+  color: var(--alpine-text-muted) !important;
+}
+
+/* Guidelines Rules */
+#golden-rules-container .card {
+  background: var(--alpine-bg-card) !important;
+  border: 1px solid var(--alpine-border) !important;
+}
+
+#golden-rules-container h6,
+#golden-rules-container .text-dark {
+  color: var(--alpine-text-light) !important;
+}
+
+#golden-rules-container p,
+#golden-rules-container .text-secondary {
+  color: var(--alpine-text-muted) !important;
+}
+
+/* Checklist Items */
+#gear-checklist-container .bg-white {
+  background: var(--alpine-bg-card) !important;
+  border: 1px solid var(--alpine-border) !important;
+  color: var(--alpine-text-light) !important;
+  transition: all 0.2s ease;
+}
+
+#gear-checklist-container .bg-white:hover {
+  border-color: var(--alpine-primary) !important;
+}
+
+#gear-checklist-container label {
+  color: var(--alpine-text-light) !important;
+}
+
+/* ============================================================
+   GALLERY & VIDEO SHOWCASE
+   ============================================================ */
+.gallery-card {
+  cursor: pointer;
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--alpine-border);
+  background: var(--alpine-bg-card);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.35s ease, 
+              box-shadow 0.35s ease;
+}
+
+.gallery-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--alpine-primary);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45), var(--alpine-theme-glow);
+}
+
+.gallery-image-box {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-card:hover .gallery-img {
+  transform: scale(1.08);
+}
+
+.gallery-top-meta {
+  z-index: 4;
+  pointer-events: none;
+}
+
+.gallery-badge-pill {
+  background: rgba(14, 9, 21, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff !important;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.gallery-zoom-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(14, 9, 21, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  opacity: 0.85;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.gallery-card:hover .gallery-zoom-circle {
+  background: var(--alpine-primary);
+  color: var(--alpine-bg-dark);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.92) 0%,
+    rgba(0, 0, 0, 0.65) 38%,
+    rgba(0, 0, 0, 0.10) 70%,
+    transparent 100%
+  );
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.gallery-title {
+  color: #ffffff !important;
+  font-size: 0.96rem;
+  line-height: 1.3;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.9), 0 2px 12px rgba(0,0,0,0.8);
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.gallery-location {
+  color: rgba(255, 255, 255, 0.90) !important;
+  font-size: 0.78rem;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+}
+
+.gallery-action-hint {
+  font-size: 0.74rem;
+  letter-spacing: 0.02em;
+  opacity: 1;
+  transition: transform 0.2s ease;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+}
+
+.gallery-card:hover .gallery-action-hint {
+  transform: translateX(2px);
+  opacity: 1;
+}
+
+/* Category Filter Buttons in Gallery */
+.gallery-filter-btn {
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 6px 16px;
+  color: var(--alpine-text-light) !important;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--alpine-border);
+  border-radius: 9999px;
+  transition: all 0.25s ease;
+}
+
+.gallery-filter-btn:hover {
+  background: rgba(245, 158, 11, 0.16);
+  border-color: var(--alpine-primary);
+  color: var(--alpine-primary) !important;
+  transform: translateY(-1px);
+}
+
+.gallery-filter-btn.active {
+  background: var(--alpine-primary) !important;
+  border-color: var(--alpine-primary) !important;
+  color: var(--alpine-bg-dark) !important;
+  box-shadow: 0 4px 16px var(--alpine-border), var(--alpine-theme-glow);
+}
+
+.video-card {
+  cursor: pointer;
+  background: var(--alpine-bg-card) !important;
+  border: 1px solid var(--alpine-border) !important;
+  transition: all 0.3s ease;
+}
+
+.video-card:hover {
+  border-color: var(--alpine-primary) !important;
+  transform: translateY(-4px);
+}
+
+.video-card h6,
+.video-card .text-dark {
+  color: var(--alpine-text-light) !important;
+}
+
+.video-play-overlay {
+  background: rgba(7, 13, 24, 0.45);
+  transition: all 0.3s ease;
+}
+
+.video-card:hover .video-play-overlay {
+  background: rgba(7, 13, 24, 0.2);
+}
+
+.play-btn-circle {
+  width: 58px;
+  height: 58px;
+  background: var(--alpine-primary);
+  color: var(--alpine-bg-dark);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.video-card:hover .play-btn-circle {
+  transform: scale(1.15);
+  box-shadow: 0 0 25px var(--alpine-border);
+}
+
+/* ============================================================
+   CONTINUOUS BOTTOM SCROLLING TICKER
+   ============================================================ */
+.alpine-bottom-ticker {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--ticker-height);
+  background: var(--alpine-glass-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid var(--alpine-border);
+  z-index: 1030;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.ticker-lead-label {
+  background: linear-gradient(90deg, var(--alpine-primary-dark), var(--alpine-primary));
+  color: var(--alpine-bg-dark);
+  font-weight: 800;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  padding: 0 14px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 2;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+[data-theme="sunset"] .ticker-lead-label { background: linear-gradient(90deg, #d97706, #f59e0b); color: #0e0915; }
+[data-theme="forest"] .ticker-lead-label { background: linear-gradient(90deg, #059669, #10b981); color: #06140e; }
+[data-theme="snow"] .ticker-lead-label { background: linear-gradient(90deg, #0284c7, #38bdf8); color: #ffffff; }
+[data-theme="glacier"] .ticker-lead-label { background: linear-gradient(90deg, #0284c7, #38bdf8); color: #070d18; }
+
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 38px;
+  font-size: 0.82rem;
+  color: var(--alpine-text-light);
+  font-weight: 500;
+}
+
+.ticker-item strong {
+  color: var(--alpine-primary);
+}
+
+.ticker-item i {
+  color: var(--alpine-primary);
+  margin-right: 6px;
+}
+
+/* ============================================================
+   DYNAMIC THEME UTILITY OVERRIDES & COMPONENTS
+   ============================================================ */
+.text-primary {
+  color: var(--alpine-primary) !important;
+}
+.border-primary {
+  border-color: var(--alpine-primary) !important;
+}
+.btn-primary {
+  background-color: var(--alpine-primary) !important;
+  border-color: var(--alpine-primary) !important;
+  color: var(--alpine-bg-dark) !important;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--alpine-primary-dark) !important;
+  border-color: var(--alpine-primary-dark) !important;
+  color: #ffffff !important;
+}
+.badge.bg-primary {
+  background-color: var(--alpine-primary) !important;
+  color: var(--alpine-bg-dark) !important;
+}
+.bg-dark {
+  background-color: var(--alpine-bg-card) !important;
+}
+.modal-content {
+  background-color: var(--alpine-bg-card) !important;
+  color: var(--alpine-text-light) !important;
+  border: 1px solid var(--alpine-border) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+.modal-header,
+.modal-footer {
+  border-color: var(--alpine-border) !important;
+}
+.btn-close {
+  filter: var(--alpine-btn-close-filter);
+}
+
+/* ============================================================
+   THEME SWITCHER BUTTON & DROPDOWN MENU
+   ============================================================ */
+.btn-outline-alpine-theme {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--alpine-border);
+  color: var(--alpine-text-light);
+  transition: all 0.25s ease;
+}
+
+.btn-outline-alpine-theme:hover,
+.btn-outline-alpine-theme:focus {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: var(--alpine-primary);
+  color: var(--alpine-primary);
+  box-shadow: var(--alpine-theme-glow);
+}
+
+.theme-dropdown-menu {
+  min-width: 235px;
+  background: var(--alpine-bg-card) !important;
+  border: 1px solid var(--alpine-border) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 16px;
+  animation: themeMenuPop 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes themeMenuPop {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.theme-dropdown-menu .dropdown-header {
+  color: var(--alpine-text-muted);
+}
+
+.theme-option-btn {
+  color: var(--alpine-text-light) !important;
+  background: transparent;
+  border: 1px solid transparent;
+  font-size: 0.86rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+}
+
+.theme-option-btn:hover {
+  background: var(--alpine-bg-surface) !important;
+  border-color: var(--alpine-border);
+  transform: translateX(3px);
+}
+
+.theme-option-btn.active-theme-choice {
+  background: rgba(245, 158, 11, 0.15) !important;
+  border-color: var(--alpine-primary) !important;
+  font-weight: 700;
+}
+[data-theme="glacier"] .theme-option-btn.active-theme-choice { background: rgba(56, 189, 248, 0.15) !important; }
+[data-theme="forest"] .theme-option-btn.active-theme-choice { background: rgba(16, 185, 129, 0.15) !important; }
+[data-theme="snow"] .theme-option-btn.active-theme-choice { background: rgba(2, 132, 199, 0.15) !important; }
+
+.theme-color-preview {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+}
+
+.preview-sunset {
+  background: linear-gradient(135deg, #f59e0b 0%, #f43f5e 100%);
+}
+.preview-glacier {
+  background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+}
+.preview-forest {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+.preview-snow {
+  background: linear-gradient(135deg, #ffffff 40%, #0284c7 100%);
+  border-color: #cbd5e1;
+}
+
+/* Theme switch notification toast */
+.theme-toast-notify {
+  position: fixed;
+  top: 90px;
+  right: 24px;
+  z-index: 1080;
+  padding: 12px 20px;
+  border-radius: 50rem;
+  background: var(--alpine-bg-card);
+  color: var(--alpine-text-light);
+  border: 1px solid var(--alpine-border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  animation: toastFadeInOut 2.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  pointer-events: none;
+}
+
+@keyframes toastFadeInOut {
+  0% { opacity: 0; transform: translateY(-16px) scale(0.94); }
+  12% { opacity: 1; transform: translateY(0) scale(1); }
+  85% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-12px) scale(0.96); }
+}
+
+/* ============================================================
+   LIGHT THEME (SNOW PEAK) SPECIFIC ADAPTATIONS
+   ============================================================ */
+[data-theme="snow"] body {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+[data-theme="snow"] ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+[data-theme="snow"] ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+
+[data-theme="snow"] .navbar-alpine {
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="snow"] .navbar-brand .text-white {
+  color: #0f172a !important;
+}
+
+[data-theme="snow"] .navbar-alpine .nav-link {
+  color: #475569 !important;
+}
+
+[data-theme="snow"] .navbar-alpine .nav-link:hover {
+  color: var(--alpine-primary) !important;
+  background: rgba(2, 132, 199, 0.08);
+}
+
+[data-theme="snow"] .navbar-alpine .nav-link.active {
+  color: #ffffff !important;
+  background: var(--alpine-primary) !important;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+}
+
+[data-theme="snow"] .navbar-toggler {
+  color: #0f172a !important;
+}
+
+[data-theme="snow"] .visitor-counter-badge {
+  background: #ffffff;
+  border-color: var(--alpine-border);
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
+}
+
+[data-theme="snow"] .visitor-counter-badge strong {
+  color: #0f172a !important;
+}
+
+[data-theme="snow"] .visitor-counter-badge .text-white-50 {
+  color: #64748b !important;
+}
+
+[data-theme="snow"] .card-alpine,
+[data-theme="snow"] .activity-card,
+[data-theme="snow"] .style-card,
+[data-theme="snow"] .shelter-card,
+[data-theme="snow"] .hazard-card,
+[data-theme="snow"] .timeline-card,
+[data-theme="snow"] .club-card,
+[data-theme="snow"] .expedition-card,
+[data-theme="snow"] .story-card,
+[data-theme="snow"] .innovation-card,
+[data-theme="snow"] .video-card,
+[data-theme="snow"] .table-alpine-wrap,
+[data-theme="snow"] .booking-box-container {
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06);
+  border-color: var(--alpine-border) !important;
+}
+
+[data-theme="snow"] .section-title,
+[data-theme="snow"] h1:not(.hero-title):not(.hero-section *):not(.view-header-banner *):not(.position-absolute *):not(.gallery-title):not([class*="overlay"] *),
+[data-theme="snow"] h2:not(.hero-title):not(.hero-section *):not(.view-header-banner *):not(.position-absolute *):not(.gallery-title):not([class*="overlay"] *),
+[data-theme="snow"] h3:not(.hero-title):not(.hero-section *):not(.view-header-banner *):not(.position-absolute *):not(.gallery-title):not([class*="overlay"] *),
+[data-theme="snow"] h4:not(.hero-section *):not(.view-header-banner *):not(.position-absolute *):not(.gallery-title):not([class*="overlay"] *),
+[data-theme="snow"] h5:not(.hero-section *):not(.view-header-banner *):not(.position-absolute *):not(.gallery-title):not([class*="overlay"] *),
+[data-theme="snow"] h6:not(.hero-section *):not(.view-header-banner *):not(.position-absolute *):not(.gallery-title):not([class*="overlay"] *) {
+  color: #0f172a !important;
+}
+
+[data-theme="snow"] .text-white:not(.btn):not(.btn *):not(.badge):not(.badge *):not(.hero-section *):not(.view-header-banner *):not(.position-absolute *):not(.gallery-card *):not([class*="overlay"] *):not(.ticker-lead-label):not(.ticker-lead-label *):not(.marker-pin *) {
+  color: #0f172a !important;
+}
+
+[data-theme="snow"] .text-white-50:not(.btn):not(.btn *):not(.badge):not(.badge *):not(.hero-section *):not(.view-header-banner *):not(.position-absolute *):not(.gallery-card *):not([class*="overlay"] *):not(.ticker-lead-label):not(.ticker-lead-label *) {
+  color: #64748b !important;
+}
+
+[data-theme="snow"] .text-white-70:not(.btn):not(.btn *):not(.badge):not(.badge *):not(.hero-section *):not(.view-header-banner *):not(.position-absolute *):not(.gallery-card *):not([class*="overlay"] *):not(.ticker-lead-label):not(.ticker-lead-label *) {
+  color: #334155 !important;
+}
+
+[data-theme="snow"] .text-white-80:not(.btn):not(.btn *):not(.badge):not(.badge *):not(.hero-section *):not(.view-header-banner *):not(.position-absolute *):not(.gallery-card *):not([class*="overlay"] *):not(.ticker-lead-label):not(.ticker-lead-label *) {
+  color: #1e293b !important;
+}
+
+[data-theme="snow"] .alpine-bottom-ticker {
+  background: rgba(255, 255, 255, 0.96);
+  border-top-color: rgba(2, 132, 199, 0.2);
+  box-shadow: 0 -4px 16px rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="snow"] .ticker-item {
+  color: #334155 !important;
+}
+
+[data-theme="snow"] .ticker-item strong {
+  color: #0f172a !important;
+}
+
+[data-theme="snow"] .accordion-alpine .accordion-button {
+  background: #ffffff !important;
+  color: #0f172a !important;
+}
+
+[data-theme="snow"] .accordion-alpine .accordion-button:not(.collapsed) {
+  background: #f1f5f9 !important;
+  color: var(--alpine-primary) !important;
+}
+
+[data-theme="snow"] .accordion-alpine .accordion-body {
+  background: #ffffff !important;
+  color: #475569 !important;
+}
+
+[data-theme="snow"] .accordion-alpine .accordion-button::after {
+  filter: none;
+}
+
+[data-theme="snow"] .table-alpine thead th {
+  background: #f1f5f9 !important;
+  color: #0f172a !important;
+  border-bottom: 2px solid var(--alpine-border);
+}
+
+[data-theme="snow"] .table-alpine tbody td {
+  color: #334155 !important;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+[data-theme="snow"] .table-alpine tbody tr:hover td {
+  background: rgba(2, 132, 199, 0.05);
+}
+
+[data-theme="snow"] .form-control-alpine,
+[data-theme="snow"] .form-select-alpine {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+[data-theme="snow"] .form-control-alpine::placeholder {
+  color: #94a3b8 !important;
+}
+
+[data-theme="snow"] #gear-checklist-container .bg-white {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+[data-theme="snow"] #gear-checklist-container label {
+  color: #0f172a !important;
+}
+
+[data-theme="snow"] .sub-nav-pills {
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+}
+
+[data-theme="snow"] .sub-nav-pill-btn {
+  color: #64748b;
+}
+
+[data-theme="snow"] .sub-nav-pill-btn.active {
+  background: var(--alpine-primary);
+  color: #ffffff;
+}
+
+[data-theme="snow"] .btn-outline-light {
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+[data-theme="snow"] .btn-outline-light:hover {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+}
+
+[data-theme="snow"] .btn-outline-alpine-theme {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+[data-theme="snow"] .btn-outline-alpine-theme:hover {
+  background: #f1f5f9;
+  border-color: var(--alpine-primary);
+  color: var(--alpine-primary);
+}
+
+/* Navbar Sign Out Button Styling */
+.btn-navbar-signout {
+  border-color: rgba(239, 68, 68, 0.45) !important;
+  color: #ef4444 !important;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-navbar-signout:hover {
+  background-color: #ef4444 !important;
+  border-color: #ef4444 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+}
+
+[data-theme="snow"] .btn-navbar-signout {
+  border-color: #f87171 !important;
+  color: #dc2626 !important;
+  background-color: rgba(239, 68, 68, 0.06) !important;
+}
+
+[data-theme="snow"] .btn-navbar-signout:hover {
+  background-color: #dc2626 !important;
+  color: #ffffff !important;
+  border-color: #dc2626 !important;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);
+}
+
+/* ============================================================
+   4K SUMMIT CARDS & RICH PAGE MEDIA COMPONENTS
+   ============================================================ */
+.summit-card {
+  background: var(--alpine-bg-card);
+  border: 1px solid var(--alpine-border);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+[data-theme="snow"] .summit-card {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+}
+
+.summit-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+  border-color: var(--alpine-primary);
+}
+
+.summit-card .summit-img-wrap {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+
+.summit-card .summit-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.summit-card:hover .summit-img-wrap img {
+  transform: scale(1.08);
+}
+
+.summit-card .summit-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(7, 13, 24, 0.95) 0%, rgba(7, 13, 24, 0.2) 60%, transparent 100%);
+  pointer-events: none;
+}
+
+.era-card {
+  background: var(--alpine-bg-card);
+  border: 1px solid var(--alpine-border);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.era-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--alpine-primary);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.era-card .era-img-wrap {
+  position: relative;
+  height: 190px;
+  overflow: hidden;
+}
+
+.era-card .era-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.era-card:hover .era-img-wrap img {
+  transform: scale(1.06);
+}
+
+.basecamp-feature-card {
+  background: var(--alpine-bg-card);
+  border: 1px solid var(--alpine-border);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.basecamp-feature-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--alpine-primary);
+}
+
+.federation-card {
+  background: var(--alpine-bg-card);
+  border: 1px solid var(--alpine-border);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.federation-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--alpine-primary);
+}
+
+
+/* ============================================================
+   UNIVERSAL HIGH-CONTRAST TYPOGRAPHY & VISIBILITY SYSTEM
+   Guarantees 100% visible, crystal-clear, high-contrast text across ALL themes
+   ============================================================ */
+
+/* Semantic Text Color Utilities */
+.text-light-heading {
+  color: var(--alpine-text-light) !important;
+}
+
+.text-light-body {
+  color: var(--alpine-text-muted) !important;
+}
+
+[data-theme="snow"] .text-light-heading {
+  color: #0f172a !important;
+}
+
+[data-theme="snow"] .text-light-body {
+  color: #334155 !important;
+}
+
+/* Search input addon */
+.search-input-addon {
+  background-color: var(--alpine-bg-surface) !important;
+  border-color: var(--alpine-border) !important;
+  color: var(--alpine-text-muted) !important;
+}
+
+[data-theme="snow"] .search-input-addon {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #64748b !important;
+}
+
+/* Booking Option Cards */
+.booking-option-card {
+  background-color: var(--alpine-bg-card) !important;
+  border-color: var(--alpine-border) !important;
+  transition: all 0.25s ease;
+}
+
+.booking-option-card:hover {
+  border-color: var(--alpine-primary) !important;
+}
+
+.booking-option-card strong {
+  color: var(--alpine-text-light) !important;
+}
+
+.booking-option-card label,
+.booking-option-card span:not(.badge):not(.text-warning) {
+  color: var(--alpine-text-muted) !important;
+}
+
+[data-theme="snow"] .booking-option-card {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+}
+
+[data-theme="snow"] .booking-option-card strong {
+  color: #0f172a !important;
+}
+
+[data-theme="snow"] .booking-option-card label,
+[data-theme="snow"] .booking-option-card span:not(.badge):not(.text-warning) {
+  color: #475569 !important;
+}
+
+/* Modal Alpine Styling */
+.modal-alpine {
+  background-color: var(--alpine-bg-card) !important;
+  border: 1px solid var(--alpine-border) !important;
+  color: var(--alpine-text-light) !important;
+}
+
+.modal-alpine label {
+  color: var(--alpine-text-muted) !important;
+}
+
+[data-theme="snow"] .modal-alpine {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+[data-theme="snow"] .modal-alpine label {
+  color: #334155 !important;
+}
+
+/* Mitigation, Golden Rules, Checklist Boxes */
+.mitigation-box {
+  background: var(--alpine-bg-surface) !important;
+  border: 1px solid var(--alpine-border) !important;
+  color: var(--alpine-text-muted) !important;
+}
+
+[data-theme="snow"] .mitigation-box {
+  background: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+  color: #334155 !important;
+}
+
+.golden-rule-card {
+  background: var(--alpine-bg-card) !important;
+  border: 1px solid var(--alpine-border) !important;
+}
+
+[data-theme="snow"] .golden-rule-card {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+}
+
+.checklist-item-box {
+  background: var(--alpine-bg-card) !important;
+  border: 1px solid var(--alpine-border) !important;
+  transition: all 0.2s ease;
+}
+
+.checklist-item-box:hover {
+  border-color: var(--alpine-primary) !important;
+}
+
+[data-theme="snow"] .checklist-item-box {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+}
+
+/* Universal Card Headings Contrast */
+.card h1, .card h2, .card h3, .card h4, .card h5, .card h6,
+.card .card-title,
+.card strong:not(.badge),
+.card-alpine h1, .card-alpine h2, .card-alpine h3, .card-alpine h4, .card-alpine h5, .card-alpine h6,
+.style-card h5, .shelter-card h5, .hazard-card h5, .story-card h5, .innovation-card h6, .expedition-card h5, .video-card h6,
+.timeline-card h5, .club-card h6, .summit-card h5, .era-card h6, .basecamp-feature-card h6, .federation-card strong {
+  color: var(--alpine-text-light) !important;
+}
+
+[data-theme="snow"] .card h1, 
+[data-theme="snow"] .card h2, 
+[data-theme="snow"] .card h3, 
+[data-theme="snow"] .card h4, 
+[data-theme="snow"] .card h5, 
+[data-theme="snow"] .card h6,
+[data-theme="snow"] .card .card-title,
+[data-theme="snow"] .card strong:not(.badge),
+[data-theme="snow"] .card-alpine h1, 
+[data-theme="snow"] .card-alpine h2, 
+[data-theme="snow"] .card-alpine h3, 
+[data-theme="snow"] .card-alpine h4, 
+[data-theme="snow"] .card-alpine h5, 
+[data-theme="snow"] .card-alpine h6,
+[data-theme="snow"] .style-card h5, 
+[data-theme="snow"] .shelter-card h5, 
+[data-theme="snow"] .hazard-card h5, 
+[data-theme="snow"] .story-card h5, 
+[data-theme="snow"] .innovation-card h6, 
+[data-theme="snow"] .expedition-card h5, 
+[data-theme="snow"] .video-card h6,
+[data-theme="snow"] .timeline-card h5, 
+[data-theme="snow"] .club-card h6, 
+[data-theme="snow"] .summit-card h5, 
+[data-theme="snow"] .era-card h6, 
+[data-theme="snow"] .basecamp-feature-card h6, 
+[data-theme="snow"] .federation-card strong {
+  color: #0f172a !important;
+}
+
+/* Universal Card Paragraphs & Small text */
+.card p, .card ul, .card ol, .card li, .card small:not(.badge),
+.style-card p, .shelter-card p, .hazard-card p, .story-card p, .innovation-card p, .expedition-card p, .video-card p,
+.timeline-card p, .club-card p, .summit-card p, .era-card p, .basecamp-feature-card p, .federation-card p {
+  color: var(--alpine-text-muted) !important;
+}
+
+[data-theme="snow"] .card p, 
+[data-theme="snow"] .card ul, 
+[data-theme="snow"] .card ol, 
+[data-theme="snow"] .card li, 
+[data-theme="snow"] .card small:not(.badge),
+[data-theme="snow"] .style-card p, 
+[data-theme="snow"] .shelter-card p, 
+[data-theme="snow"] .hazard-card p, 
+[data-theme="snow"] .story-card p, 
+[data-theme="snow"] .innovation-card p, 
+[data-theme="snow"] .expedition-card p, 
+[data-theme="snow"] .video-card p,
+[data-theme="snow"] .timeline-card p, 
+[data-theme="snow"] .club-card p, 
+[data-theme="snow"] .summit-card p, 
+[data-theme="snow"] .era-card p, 
+[data-theme="snow"] .basecamp-feature-card p, 
+[data-theme="snow"] .federation-card p {
+  color: #334155 !important;
+}
+
+/* Table Alpine High-Contrast */
+.table-alpine,
+.table-alpine td,
+.table-alpine th {
+  color: var(--alpine-text-light) !important;
+}
+
+.table-alpine td.text-light-body,
+.table-alpine td .text-light-body,
+.table-alpine td.text-muted,
+.table-alpine td.text-secondary {
+  color: var(--alpine-text-muted) !important;
+}
+
+[data-theme="snow"] .table-alpine,
+[data-theme="snow"] .table-alpine td,
+[data-theme="snow"] .table-alpine th {
+  color: #0f172a !important;
+}
+
+[data-theme="snow"] .table-alpine td.text-light-body,
+[data-theme="snow"] .table-alpine td .text-light-body,
+[data-theme="snow"] .table-alpine td.text-muted,
+[data-theme="snow"] .table-alpine td.text-secondary {
+  color: #334155 !important;
+}
+
+/* Badges with light backgrounds */
+.badge.bg-secondary-subtle {
+  background-color: var(--alpine-bg-surface) !important;
+  color: var(--alpine-text-light) !important;
+  border: 1px solid var(--alpine-border) !important;
+}
+
+[data-theme="snow"] .badge.bg-secondary-subtle {
+  background-color: #e2e8f0 !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+.badge.bg-warning-subtle {
+  background-color: rgba(245, 158, 11, 0.18) !important;
+  color: #f59e0b !important;
+  border: 1px solid rgba(245, 158, 11, 0.3) !important;
+}
+
+.badge.bg-primary-subtle {
+  background-color: rgba(56, 189, 248, 0.18) !important;
+  color: var(--alpine-primary) !important;
+  border: 1px solid var(--alpine-border) !important;
+}
+
+.badge.bg-success-subtle {
+  background-color: rgba(16, 185, 129, 0.18) !important;
+  color: #10b981 !important;
+  border: 1px solid rgba(16, 185, 129, 0.3) !important;
+}
+
+.badge.bg-danger-subtle {
+  background-color: rgba(239, 68, 68, 0.18) !important;
+  color: #ef4444 !important;
+  border: 1px solid rgba(239, 68, 68, 0.3) !important;
+}
+
+/* Accordion Alpine Body High-Contrast */
+.accordion-alpine .accordion-body h6 {
+  color: var(--alpine-primary) !important;
+}
+
+.accordion-alpine .accordion-body ol,
+.accordion-alpine .accordion-body li,
+.accordion-alpine .accordion-body p {
+  color: var(--alpine-text-muted) !important;
+}
+
+[data-theme="snow"] .accordion-alpine .accordion-body ol,
+[data-theme="snow"] .accordion-alpine .accordion-body li,
+[data-theme="snow"] .accordion-alpine .accordion-body p {
+  color: #334155 !important;
+}
+
+/* ============================================================
+   FOOTER — THEME-ADAPTIVE HIGH-CONTRAST SYSTEM
+   Overrides Bootstrap's hardcoded bg-dark so all themes read cleanly
+   ============================================================ */
+
+/* ---- Default / Dark Themes (sunset, glacier, forest) ---- */
+footer[class*="bg-dark"],
+footer.bg-dark {
+  background-color: var(--alpine-bg-card) !important;
+  border-top: 1px solid var(--alpine-border) !important;
+  color: var(--alpine-text-muted) !important;
+}
+
+footer[class*="bg-dark"] h5,
+footer[class*="bg-dark"] h6,
+footer.bg-dark h5,
+footer.bg-dark h6 {
+  color: var(--alpine-text-light) !important;
+}
+
+footer[class*="bg-dark"] .text-white,
+footer.bg-dark .text-white {
+  color: var(--alpine-text-light) !important;
+}
+
+footer[class*="bg-dark"] .text-white-70,
+footer.bg-dark .text-white-70 {
+  color: var(--alpine-text-muted) !important;
+}
+
+footer[class*="bg-dark"] .text-white-50,
+footer.bg-dark .text-white-50 {
+  color: rgba(203, 213, 225, 0.75) !important;
+}
+
+footer[class*="bg-dark"] .bg-dark-subtle,
+footer.bg-dark .bg-dark-subtle {
+  background-color: var(--alpine-bg-surface) !important;
+  border-color: var(--alpine-border) !important;
+  color: var(--alpine-text-muted) !important;
+}
+
+footer[class*="bg-dark"] .border-secondary,
+footer.bg-dark .border-secondary {
+  border-color: var(--alpine-border) !important;
+}
+
+footer[class*="bg-dark"] p,
+footer.bg-dark p {
+  color: var(--alpine-text-muted) !important;
+}
+
+/* ---- Snow (Light) Theme Footer ---- */
+[data-theme="snow"] footer[class*="bg-dark"],
+[data-theme="snow"] footer.bg-dark {
+  background-color: #f1f5f9 !important;
+  border-top-color: #e2e8f0 !important;
+  color: #475569 !important;
+}
+
+[data-theme="snow"] footer h5,
+[data-theme="snow"] footer h6 {
+  color: #0f172a !important;
+}
+
+[data-theme="snow"] footer .text-white,
+[data-theme="snow"] footer .text-white-80 {
+  color: #0f172a !important;
+}
+
+[data-theme="snow"] footer .text-white-70 {
+  color: #334155 !important;
+}
+
+[data-theme="snow"] footer .text-white-50 {
+  color: #64748b !important;
+}
+
+[data-theme="snow"] footer .bg-dark-subtle {
+  background-color: #e2e8f0 !important;
+  border-color: #cbd5e1 !important;
+  color: #334155 !important;
+}
+
+[data-theme="snow"] footer .border-secondary {
+  border-color: #e2e8f0 !important;
+}
+
+[data-theme="snow"] footer p {
+  color: #475569 !important;
+}
+
+[data-theme="snow"] footer a.text-white-50,
+[data-theme="snow"] footer a.hover-text-primary {
+  color: #475569 !important;
+}
+
+[data-theme="snow"] footer a.text-white-50:hover,
+[data-theme="snow"] footer a.hover-text-primary:hover {
+  color: var(--alpine-primary) !important;
+}
+
+[data-theme="snow"] footer .btn-outline-secondary {
+  border-color: #cbd5e1 !important;
+  color: #64748b !important;
+}
+
+[data-theme="snow"] footer .btn-outline-secondary:hover {
+  background-color: var(--alpine-primary) !important;
+  border-color: var(--alpine-primary) !important;
+  color: #ffffff !important;
+}
+
+/* ============================================================
+   HOMEPAGE (#view-home) — HIGH-CONTRAST SECTION-LEVEL FIXES
+   Targets all text outside .hero-section for full theme support
+   ============================================================ */
+
+/* Summit showcase card bodies (.p-4 div inside .summit-card) */
+.summit-card .p-4 h5,
+.summit-card .p-4 h6 {
+  color: var(--alpine-text-light) !important;
+}
+
+.summit-card .p-4 p,
+.summit-card .p-4 small,
+.summit-card .p-4 span:not(.badge) {
+  color: var(--alpine-text-muted) !important;
+}
+
+[data-theme="snow"] .summit-card .p-4 h5,
+[data-theme="snow"] .summit-card .p-4 h6 {
+  color: #0f172a !important;
+}
+
+[data-theme="snow"] .summit-card .p-4 p,
+[data-theme="snow"] .summit-card .p-4 small,
+[data-theme="snow"] .summit-card .p-4 span:not(.badge) {
+  color: #334155 !important;
+}
+
+/* Activity hub cards */
+.activity-card h5 {
+  color: var(--alpine-text-light) !important;
+}
+
+.activity-card p {
+  color: var(--alpine-text-muted) !important;
+}
+
+[data-theme="snow"] .activity-card {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+[data-theme="snow"] .activity-card h5 {
+  color: #0f172a !important;
+}
+
+[data-theme="snow"] .activity-card p {
+  color: #334155 !important;
+}
+
+[data-theme="snow"] .activity-icon-wrap {
+  background: #f1f5f9 !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* "What is Mountaineering?" overview cards */
+#view-home .card-alpine .text-white,
+#view-home .card-alpine h6.fw-bold {
+  color: var(--alpine-text-light) !important;
+}
+
+#view-home .card-alpine small.text-white-50 {
+  color: var(--alpine-text-muted) !important;
+}
+
+[data-theme="snow"] #view-home .card-alpine {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+[data-theme="snow"] #view-home .card-alpine h6.fw-bold,
+[data-theme="snow"] #view-home .card-alpine .text-white {
+  color: #0f172a !important;
+}
+
+[data-theme="snow"] #view-home .card-alpine small.text-white-50 {
+  color: #475569 !important;
+}
+
+/* Featured expedition spotlight card */
+[data-theme="snow"] #view-home .card-alpine .text-white-50,
+[data-theme="snow"] #view-home .card-alpine p.text-white-50 {
+  color: #475569 !important;
+}
+
+[data-theme="snow"] #view-home .list-group-item.text-white-70 {
+  color: #334155 !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* Image caption overlay (inside summit/overview images — always dark bg so text stays white) */
+.position-absolute h5.text-white,
+.position-absolute p.text-white-70 {
+  color: #ffffff !important;
+}
+
+/* Snow theme: btn-outline-light on light bg needs override */
+[data-theme="snow"] .summit-card .btn-outline-light,
+[data-theme="snow"] #view-home .btn-outline-light {
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+[data-theme="snow"] .summit-card .btn-outline-light:hover,
+[data-theme="snow"] #view-home .btn-outline-light:hover {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+}
+
+/* btn-dark-glass on snow: make it readable */
+[data-theme="snow"] .btn-dark-glass {
+  background: rgba(15, 23, 42, 0.08) !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+[data-theme="snow"] .btn-dark-glass:hover {
+  background: #0f172a !important;
+  color: #ffffff !important;
+}
+
+/* ============================================================
+   BOOKING VIEW (view-booking) — SNOW THEME FORM CONTRAST
+   Ensures all form labels, price rows, and helper text are
+   readable on the light #ffffff booking-box-container background
+   ============================================================ */
+[data-theme="snow"] .booking-box-container {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08) !important;
+}
+
+/* Form labels using text-white-70 */
+[data-theme="snow"] #view-booking .text-white-70,
+[data-theme="snow"] .booking-box-container .text-white-70 {
+  color: #334155 !important;
+}
+
+/* Gear addon labels using text-white-80 */
+[data-theme="snow"] #view-booking .text-white-80,
+[data-theme="snow"] .booking-box-container .text-white-80 {
+  color: #1e293b !important;
+}
+
+/* Text-white-50 inside booking (helper text, terms label) */
+[data-theme="snow"] #view-booking .text-white-50,
+[data-theme="snow"] .booking-box-container .text-white-50 {
+  color: #475569 !important;
+}
+
+/* Text-white headings inside booking */
+[data-theme="snow"] #view-booking .text-white,
+[data-theme="snow"] .booking-box-container .text-white {
+  color: #0f172a !important;
+}
+
+/* bg-dark-subtle inside booking */
+[data-theme="snow"] .booking-box-container .bg-dark-subtle {
+  background-color: #e2e8f0 !important;
+  color: #334155 !important;
+  border-color: #cbd5e1 !important;
+}
+
+/* Price breakdown row borders */
+[data-theme="snow"] .booking-box-container .border-secondary {
+  border-color: #e2e8f0 !important;
+}
+
+/* ============================================================
+   GLOBAL SNOW THEME TEXT OVERRIDE — ALL VIEWS
+   Catch-all for text-white-70/80/50 in any non-hero context
+   ============================================================ */
+
+/* Target text-white-70/80 ANYWHERE outside hero, banners, image overlays and ticker */
+[data-theme="snow"] .spa-view:not(#view-home) .text-white-70:not(.view-header-banner *):not(.position-absolute *):not(.gallery-card *):not([class*="overlay"] *) {
+  color: #334155 !important;
+}
+
+[data-theme="snow"] .spa-view:not(#view-home) .text-white-80:not(.view-header-banner *):not(.position-absolute *):not(.gallery-card *):not([class*="overlay"] *) {
+  color: #1e293b !important;
+}
+
+[data-theme="snow"] .spa-view:not(#view-home) .text-white-50:not(.view-header-banner *):not(.position-absolute *):not(.gallery-card *):not([class*="overlay"] *) {
+  color: #475569 !important;
+}
+
+[data-theme="snow"] .spa-view:not(#view-home) .text-white:not(.view-header-banner *):not(.position-absolute *):not(.gallery-card *):not([class*="overlay"] *) {
+  color: #0f172a !important;
+}
+
+/* Exceptions: image overlays always stay white (they sit on dark gradient bg) */
+.position-absolute .text-white,
+.position-absolute p,
+.position-absolute small,
+.position-absolute h1,
+.position-absolute h2,
+.position-absolute h3,
+.position-absolute h4,
+.position-absolute h5,
+.position-absolute h6,
+.position-absolute span:not(.badge):not(.text-dark),
+.position-absolute strong:not(.badge):not(.text-dark),
+[data-theme="snow"] .position-absolute .text-white,
+[data-theme="snow"] .position-absolute p,
+[data-theme="snow"] .position-absolute small,
+[data-theme="snow"] .position-absolute h1,
+[data-theme="snow"] .position-absolute h2,
+[data-theme="snow"] .position-absolute h3,
+[data-theme="snow"] .position-absolute h4,
+[data-theme="snow"] .position-absolute h5,
+[data-theme="snow"] .position-absolute h6,
+[data-theme="snow"] .position-absolute span:not(.badge):not(.text-dark),
+[data-theme="snow"] .position-absolute strong:not(.badge):not(.text-dark) {
+  color: #ffffff !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95), 0 2px 10px rgba(0, 0, 0, 0.85) !important;
+}
+
+/* View-header-banner text always stays white (dark bg) */
+.view-header-banner h1,
+.view-header-banner h2,
+.view-header-banner h3,
+.view-header-banner p,
+.view-header-banner small,
+.view-header-banner .view-breadcrumb,
+.view-header-banner .view-breadcrumb a,
+.view-header-banner .view-breadcrumb span,
+.view-header-banner .text-white,
+.view-header-banner .text-white-70,
+.view-header-banner .text-white-80,
+[data-theme="snow"] .view-header-banner h1,
+[data-theme="snow"] .view-header-banner h2,
+[data-theme="snow"] .view-header-banner h3,
+[data-theme="snow"] .view-header-banner p,
+[data-theme="snow"] .view-header-banner small,
+[data-theme="snow"] .view-header-banner .view-breadcrumb,
+[data-theme="snow"] .view-header-banner .view-breadcrumb a,
+[data-theme="snow"] .view-header-banner .view-breadcrumb span,
+[data-theme="snow"] .view-header-banner .text-white,
+[data-theme="snow"] .view-header-banner .text-white-70,
+[data-theme="snow"] .view-header-banner .text-white-80 {
+  color: #ffffff !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95), 0 2px 12px rgba(0, 0, 0, 0.85) !important;
+}
+
+/* ============================================================
+   SAFETY VIEW — CARD & SECTION CONTRAST IN SNOW
+   ============================================================ */
+[data-theme="snow"] #view-safety .card-alpine h5,
+[data-theme="snow"] #view-safety .card-alpine h4 {
+  color: #0f172a !important;
+}
+
+[data-theme="snow"] #view-safety .card-alpine p {
+  color: #334155 !important;
+}
+
+[data-theme="snow"] #view-safety h4.text-white:not(.view-header-banner *):not(.position-absolute *),
+[data-theme="snow"] #view-safety h5.text-white:not(.view-header-banner *):not(.position-absolute *) {
+  color: #0f172a !important;
+}
+
+/* ============================================================
+   HISTORY, DISCIPLINES, RECORDS, MAP, CAMPS, GALLERY VIEWS
+   Snow theme heading/text fixes
+   ============================================================ */
+[data-theme="snow"] #view-history h4:not(.view-header-banner *):not(.position-absolute *),
+[data-theme="snow"] #view-history h5:not(.view-header-banner *):not(.position-absolute *),
+[data-theme="snow"] #view-disciplines h4:not(.view-header-banner *):not(.position-absolute *),
+[data-theme="snow"] #view-disciplines h5:not(.view-header-banner *):not(.position-absolute *),
+[data-theme="snow"] #view-records h4:not(.view-header-banner *):not(.position-absolute *),
+[data-theme="snow"] #view-records h5:not(.view-header-banner *):not(.position-absolute *),
+[data-theme="snow"] #view-map h4:not(.view-header-banner *):not(.position-absolute *),
+[data-theme="snow"] #view-map h5:not(.view-header-banner *):not(.position-absolute *),
+[data-theme="snow"] #view-camps h4:not(.view-header-banner *):not(.position-absolute *),
+[data-theme="snow"] #view-camps h5:not(.view-header-banner *):not(.position-absolute *),
+[data-theme="snow"] #view-gallery h4:not(.view-header-banner *):not(.position-absolute *):not(.gallery-card *),
+[data-theme="snow"] #view-gallery h5:not(.view-header-banner *):not(.position-absolute *):not(.gallery-card *) {
+  color: #0f172a !important;
+}
+
+/* Snow theme: era-card and basecamp cards */
+[data-theme="snow"] .era-card {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+[data-theme="snow"] .era-card h6,
+[data-theme="snow"] .era-card strong {
+  color: #0f172a !important;
+}
+
+[data-theme="snow"] .era-card p,
+[data-theme="snow"] .era-card small {
+  color: #334155 !important;
+}
+
+[data-theme="snow"] .basecamp-feature-card {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+[data-theme="snow"] .federation-card {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* ============================================================
+   MODALS IN SNOW — bg-dark overrides
+   ============================================================ */
+[data-theme="snow"] .modal-content.bg-dark {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+[data-theme="snow"] .modal-content.bg-dark .text-white,
+[data-theme="snow"] .modal-content.bg-dark h4,
+[data-theme="snow"] .modal-content.bg-dark h5 {
+  color: #0f172a !important;
+}
+
+[data-theme="snow"] .modal-content.bg-dark .text-white-70,
+[data-theme="snow"] .modal-content.bg-dark p {
+  color: #334155 !important;
+}
+
+[data-theme="snow"] .modal-content.bg-dark .border-secondary {
+  border-color: #e2e8f0 !important;
+}
+
+/* Toast in snow */
+[data-theme="snow"] #alpineLiveToast.bg-dark {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+}
+
+
+
+/* ============================================================
+   AUTH MODAL TABS & DYNAMIC INDICATOR LINE
+   ============================================================ */
+#authTabs {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1) !important;
+  display: flex;
+}
+
+#authTabs .nav-item {
+  flex: 1 1 0%;
+}
+
+#authTabs .nav-link {
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: none !important;
+  border-bottom: 3px solid transparent !important;
+  background: transparent !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 14px 16px !important;
+  position: relative;
+  border-radius: 0 !important;
+}
+
+#authTabs .nav-link:hover {
+  color: #ffffff !important;
+}
+
+#authTabs .nav-link.active {
+  color: #ffffff !important;
+  border-bottom: 3px solid var(--alpine-primary) !important;
+}
+
+#authTabs .nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--alpine-primary);
+  box-shadow: 0 0 14px var(--alpine-primary);
+  border-radius: 3px 3px 0 0;
+}
+
+/* Auth Modal Tabs in Snow (Light Mode) - Sign In & Create Options in Black Color */
+[data-theme="snow"] #authTabs,
+.modal-alpine.bg-white #authTabs {
+  border-bottom: 2px solid #e2e8f0 !important;
+}
+
+[data-theme="snow"] #authTabs .nav-link,
+.modal-alpine.bg-white #authTabs .nav-link {
+  color: #000000 !important;
+  opacity: 0.75;
+}
+
+[data-theme="snow"] #authTabs .nav-link:hover,
+.modal-alpine.bg-white #authTabs .nav-link:hover {
+  color: #000000 !important;
+  opacity: 1;
+}
+
+[data-theme="snow"] #authTabs .nav-link.active,
+.modal-alpine.bg-white #authTabs .nav-link.active {
+  color: #000000 !important;
+  opacity: 1;
+  font-weight: 800;
+  border-bottom: 3px solid var(--alpine-primary) !important;
+}
+
+[data-theme="snow"] #authTabs .nav-link.active::after,
+.modal-alpine.bg-white #authTabs .nav-link.active::after {
+  background: var(--alpine-primary);
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
+}
+
+[data-theme="snow"] #authModal .btn-close,
+[data-theme="snow"] #authModal .btn-close-white {
+  filter: none !important;
+  opacity: 0.8;
+}
+
+[data-theme="snow"] #authModal .btn-close:hover,
+[data-theme="snow"] #authModal .btn-close-white:hover {
+  opacity: 1;
+}
+
+[data-theme="snow"] #authModal .modal-header {
+  border-bottom-color: #e2e8f0 !important;
+}
+
+[data-theme="snow"] #authModal #btn-toggle-password {
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+  background: #f8fafc;
+}
+
+[data-theme="snow"] #authModal .form-check-label {
+  color: #334155 !important;
+}
+
+/* ============================================================
+   USER PROFILE MODAL & BOOKING AUTH BANNER STYLING
+   ============================================================ */
+#userProfileModal .modal-content {
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+}
+
+.user-bookings-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.user-bookings-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.user-bookings-list::-webkit-scrollbar-thumb {
+  background: var(--alpine-primary);
+  border-radius: 4px;
+}
+
+/* User Profile Modal in Snow Peak Light Mode */
+[data-theme="snow"] #userProfileModal .text-white {
+  color: #0f172a !important;
+}
+
+[data-theme="snow"] #userProfileModal .text-white-70 {
+  color: #334155 !important;
+}
+
+[data-theme="snow"] #userProfileModal .text-white-50 {
+  color: #64748b !important;
+}
+
+[data-theme="snow"] #userProfileModal .card,
+[data-theme="snow"] #userProfileModal [style*="background: rgba(255,255,255"] {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+[data-theme="snow"] #userProfileModal .btn-close,
+[data-theme="snow"] #userProfileModal .btn-close-white {
+  filter: none !important;
+  opacity: 0.8;
+}
+
+[data-theme="snow"] #userProfileModal .btn-close:hover,
+[data-theme="snow"] #userProfileModal .btn-close-white:hover {
+  opacity: 1;
+}
+
+/* Booking Auth Banner */
+#booking-auth-banner .alert {
+  border-radius: 1rem;
+  backdrop-filter: blur(12px);
+}
+
+[data-theme="snow"] #booking-auth-banner .alert-warning {
+  background-color: #fffbeb !important;
+  border-color: #fde68a !important;
+  color: #92400e !important;
+}
+
+[data-theme="snow"] #booking-auth-banner .alert-warning .text-white-70 {
+  color: #78350f !important;
+}
+
+[data-theme="snow"] #booking-auth-banner .alert-success {
+  background-color: #ecfdf5 !important;
+  border-color: #a7f3d0 !important;
+  color: #065f46 !important;
+}
+
+[data-theme="snow"] #booking-auth-banner .alert-success .text-white-70 {
+  color: #047857 !important;
+}
+
+/* Form Controls Validation Styling */
+.form-control-alpine.is-invalid,
+.form-control.is-invalid {
+  border-color: #ef4444 !important;
+  background-color: rgba(239, 68, 68, 0.08) !important;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.35) !important;
+}
+
+#signupNameError {
+  animation: fadeInDown 0.2s ease forwards;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================
+   PRINT STYLES FOR OFFICIAL EXPEDITION PASS
+   ============================================================ */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    padding-bottom: 0 !important;
+  }
+  .navbar-alpine,
+  .hero-section,
+  .alpine-bottom-ticker,
+  .d-print-none,
+  .spa-view {
+    display: none !important;
+  }
+  #expeditionPassModal {
+    display: block !important;
+    position: static !important;
+  }
+  .modal-dialog {
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+  .modal-content {
+    border: none !important;
+    box-shadow: none !important;
+  }
+  .expedition-ticket {
+    border: 2px solid #000 !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+}
+
+/* ============================================================
+   ULTIMATE IMAGE & DARK OVERLAY CONTRAST SYSTEM (ALL THEMES)
+   Guarantees that ANY text on an image or dark gradient overlay
+   is ALWAYS bright white (#ffffff) with high contrast text-shadow.
+   ============================================================ */
+
+/* 1. Hero Section (Home top banner with hero-bg image) */
+.hero-section,
+[data-theme="snow"] .hero-section,
+[data-theme="glacier"] .hero-section,
+[data-theme="forest"] .hero-section,
+[data-theme="sunset"] .hero-section {
+  color: #ffffff !important;
+}
+
+.hero-section h1,
+.hero-section .hero-title,
+.hero-section .hero-lead,
+.hero-section p,
+.hero-section small,
+.hero-section .hero-pill-badge,
+.hero-section .hero-stat-card,
+.hero-section .hero-stat-number,
+[data-theme="snow"] .hero-section h1,
+[data-theme="snow"] .hero-section .hero-title,
+[data-theme="snow"] .hero-section .hero-lead,
+[data-theme="snow"] .hero-section p,
+[data-theme="snow"] .hero-section small,
+[data-theme="snow"] .hero-section .hero-pill-badge,
+[data-theme="snow"] .hero-section .hero-stat-card,
+[data-theme="snow"] .hero-section .hero-stat-number {
+  color: #ffffff !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95), 0 2px 14px rgba(0, 0, 0, 0.85) !important;
+}
+
+.hero-section .hero-stat-label,
+[data-theme="snow"] .hero-section .hero-stat-label {
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9) !important;
+}
+
+.hero-section .hero-pill-badge,
+[data-theme="snow"] .hero-section .hero-pill-badge {
+  background: rgba(15, 28, 48, 0.9) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* 2. View Header Banners (All SPA views) */
+.view-header-banner h1,
+.view-header-banner h2,
+.view-header-banner h3,
+.view-header-banner p,
+.view-header-banner small,
+.view-header-banner .view-breadcrumb,
+.view-header-banner .view-breadcrumb a,
+.view-header-banner .view-breadcrumb span,
+.view-header-banner .view-breadcrumb i,
+[data-theme="snow"] .view-header-banner h1,
+[data-theme="snow"] .view-header-banner h2,
+[data-theme="snow"] .view-header-banner h3,
+[data-theme="snow"] .view-header-banner p,
+[data-theme="snow"] .view-header-banner small,
+[data-theme="snow"] .view-header-banner .view-breadcrumb,
+[data-theme="snow"] .view-header-banner .view-breadcrumb a,
+[data-theme="snow"] .view-header-banner .view-breadcrumb span,
+[data-theme="snow"] .view-header-banner .view-breadcrumb i {
+  color: #ffffff !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95), 0 2px 14px rgba(0, 0, 0, 0.85) !important;
+}
+
+/* 3. Image Overlays, Photo Mosaics, and Cards Across All Views */
+.position-absolute h1,
+.position-absolute h2,
+.position-absolute h3,
+.position-absolute h4,
+.position-absolute h5,
+.position-absolute h6,
+.position-absolute p,
+.position-absolute small,
+.position-absolute span:not(.badge):not(.text-dark),
+.position-absolute strong:not(.badge):not(.text-dark),
+.position-relative .position-absolute small,
+.position-relative .position-absolute h5,
+.position-relative .position-absolute p,
+[data-theme="snow"] .position-absolute h1,
+[data-theme="snow"] .position-absolute h2,
+[data-theme="snow"] .position-absolute h3,
+[data-theme="snow"] .position-absolute h4,
+[data-theme="snow"] .position-absolute h5,
+[data-theme="snow"] .position-absolute h6,
+[data-theme="snow"] .position-absolute p,
+[data-theme="snow"] .position-absolute small,
+[data-theme="snow"] .position-absolute span:not(.badge):not(.text-dark),
+[data-theme="snow"] .position-absolute strong:not(.badge):not(.text-dark),
+[data-theme="snow"] .position-relative .position-absolute small,
+[data-theme="snow"] .position-relative .position-absolute h5,
+[data-theme="snow"] .position-relative .position-absolute p {
+  color: #ffffff !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95), 0 2px 10px rgba(0, 0, 0, 0.85) !important;
+}
+
+/* 4. Visual Archive Gallery Cards */
+.gallery-card .gallery-title,
+.gallery-card .gallery-location,
+.gallery-card .gallery-overlay h6,
+.gallery-card .gallery-overlay small,
+.gallery-card .gallery-overlay span:not(.gallery-action-hint),
+.gallery-card .gallery-overlay div,
+.gallery-card .gallery-badge-pill,
+.gallery-card .gallery-zoom-circle,
+[data-theme="snow"] .gallery-card .gallery-title,
+[data-theme="snow"] .gallery-card .gallery-location,
+[data-theme="snow"] .gallery-card .gallery-overlay h6,
+[data-theme="snow"] .gallery-card .gallery-overlay small,
+[data-theme="snow"] .gallery-card .gallery-overlay span:not(.gallery-action-hint),
+[data-theme="snow"] .gallery-card .gallery-overlay div,
+[data-theme="snow"] .gallery-card .gallery-badge-pill,
+[data-theme="snow"] .gallery-card .gallery-zoom-circle {
+  color: #ffffff !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95), 0 2px 12px rgba(0, 0, 0, 0.9) !important;
+}
+
+.gallery-card .gallery-action-hint,
+[data-theme="snow"] .gallery-card .gallery-action-hint {
+  color: #38bdf8 !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* 5. Video Showcase Cards */
+.video-card .play-btn-circle i,
+[data-theme="snow"] .video-card .play-btn-circle i {
+  color: #ffffff !important;
+}
+.video-card .position-relative .badge.bg-dark,
+[data-theme="snow"] .video-card .position-relative .badge.bg-dark {
+  color: #ffffff !important;
+  background-color: rgba(15, 23, 42, 0.85) !important;
+}
+
+/* ============================================================
+   6. AVATAR PICKER & CUSTOM USER PROFILE PHOTO STYLING
+   ============================================================ */
+.avatar-preset-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  padding: 0;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  background: transparent;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-preset-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.avatar-preset-btn:hover {
+  border-color: var(--alpine-primary, #38bdf8);
+  transform: scale(1.1);
+}
+
+.avatar-preset-btn:hover img {
+  transform: scale(1.05);
+}
+
+.avatar-preset-btn.active-preset {
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.45);
+  transform: scale(1.08);
+}
+
+.avatar-edit-badge {
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.avatar-edit-badge:hover {
+  transform: scale(1.15);
+  filter: brightness(1.15);
+}
+
+[data-theme="snow"] .avatar-preset-btn {
+  border: 2px solid rgba(15, 23, 42, 0.25);
+}
+
+[data-theme="snow"] .avatar-preset-btn.active-preset {
+  border-color: #0284c7 !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.35);
+}
+
+/* Modal Alpine Theme Adaptation */
+.modal-alpine {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(56, 189, 248, 0.3) !important;
+}
+
+[data-theme="snow"] .modal-alpine {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+}
+
+[data-theme="snow"] .modal-alpine .text-white {
+  color: #0f172a !important;
+}
+
+[data-theme="snow"] .modal-alpine .text-white-70 {
+  color: #334155 !important;
+}
+
+[data-theme="snow"] .modal-alpine .text-white-50 {
+  color: #64748b !important;
+}
+
+[data-theme="snow"] .modal-alpine .btn-close-white {
+  filter: invert(1) grayscale(100%) brightness(20%) !important;
+}
+
+

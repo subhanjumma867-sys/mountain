@@ -1,0 +1,2023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <!-- SEO Meta Tags -->
+  <title>Alpine Ascents | The World Leader in Mountaineering & Guided Expeditions</title>
+  <meta name="description" content="Alpine Ascents is the premier global mountaineering expedition portal. Explore history, styles, techniques, sheltering, hazards, records, clubs map with GeoLocation, and book world-class climbs.">
+  <meta name="keywords" content="mountaineering, alpine climbing, Alpine Ascents, Everest expedition, Denali climb, Mont Blanc, alpine techniques, crevasse rescue, high altitude shelters, mountain hazards, UIAA">
+  <meta name="author" content="Alpine Ascents International">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- FontAwesome 6.5.1 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Leaflet CSS for Global Mountain Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Immediate Theme Engine Boot (Default Dark Mode & Prevents FOUC) -->
+  <script>
+    (function() {
+      try {
+        var savedTheme = localStorage.getItem('alpine_portal_theme');
+        if (!savedTheme || savedTheme === 'snow') {
+          savedTheme = 'sunset';
+          localStorage.setItem('alpine_portal_theme', 'sunset');
+        }
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body id="top">
+
+  <!-- ============================================================
+       TOP HEADER & CLEAN SPA NAVBAR
+       ============================================================ -->
+  <!-- ============================================================
+       TOP HEADER & CLEAN STRAIGHTLINE NAVBAR
+       ============================================================ -->
+  <header class="navbar-alpine-wrapper" id="mainNavbarWrapper">
+    <nav class="navbar navbar-expand-lg navbar-alpine" id="mainNavbar">
+      <div class="container-fluid px-3 px-lg-3 px-xl-4">
+        
+        <!-- Brand & Logo -->
+        <a class="navbar-brand d-flex align-items-center gap-2 text-white cursor-pointer me-3" onclick="switchSpaView('view-home')">
+          <div class="position-relative">
+            <img src="assets/images/logo.jpg" alt="Alpine Ascents Logo" class="brand-logo-img">
+            <span class="live-pulse-dot position-absolute top-0 end-0 translate-middle p-1"></span>
+          </div>
+          <div class="d-flex flex-column">
+            <span class="fw-bold tracking-tight text-white lh-1">ALPINE ASCENTS</span>
+            <small class="text-primary text-uppercase fw-bold" style="font-size: 0.65rem; letter-spacing: 0.14em;">Expeditions &bull; 1986</small>
+          </div>
+        </a>
+
+        <!-- Visitor Count Badge (Beside Brand on Extra Large Screens) -->
+        <div class="d-none d-xxl-flex align-items-center gap-2 me-3 visitor-counter-badge">
+          <span class="live-pulse-dot"></span>
+          <span class="text-white-50 small"><strong id="live-climbers-active" class="text-white">142</strong> Online</span>
+          <span class="text-white-50 opacity-50">&bull;</span>
+          <span class="text-white-50 small"><i class="fa-solid fa-eye text-primary me-1"></i><strong id="visitor-count-number" class="text-primary">14,820</strong> Visits</span>
+        </div>
+
+        <!-- Mobile Toggler -->
+        <button class="navbar-toggler border-0 text-white p-2 ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars-staggered fa-lg"></i>
+        </button>
+
+        <!-- Navbar Links & Controls in Straightline -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav align-items-lg-center mx-lg-auto mb-2 mb-lg-0" id="mainNavLinks">
+            
+            <!-- Home Link -->
+            <li class="nav-item">
+              <a class="nav-link active" data-view="view-home" onclick="switchSpaView('view-home')">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+              </a>
+            </li>
+
+            <!-- Expeditions & Heritage Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="expeditionsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-mountain"></i>
+                <span>Expeditions</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-alpine shadow-lg" aria-labelledby="expeditionsDropdown">
+                <li>
+                  <a class="dropdown-item-alpine" data-view="view-disciplines" onclick="switchSpaView('view-disciplines')">
+                    <span class="item-icon"><i class="fa-solid fa-layer-group"></i></span>
+                    <div>
+                      <span class="item-title">Disciplines & Skills</span>
+                      <span class="item-desc">Alpine style, ice climbing, rock & crevasse rescue</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item-alpine" data-view="view-history" onclick="switchSpaView('view-history')">
+                    <span class="item-icon"><i class="fa-solid fa-timeline"></i></span>
+                    <div>
+                      <span class="item-title">History & Heritage</span>
+                      <span class="item-desc">150+ years of high-altitude pioneering ascents</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item-alpine" data-view="view-records" onclick="switchSpaView('view-records')">
+                    <span class="item-icon"><i class="fa-solid fa-trophy"></i></span>
+                    <div>
+                      <span class="item-title">World Records</span>
+                      <span class="item-desc">Legendary feats, 8000m summits & speed ascents</span>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Explore & Media Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="exploreDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-compass"></i>
+                <span>Explore</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-alpine shadow-lg" aria-labelledby="exploreDropdown">
+                <li>
+                  <a class="dropdown-item-alpine" data-view="view-map" onclick="switchSpaView('view-map')">
+                    <span class="item-icon"><i class="fa-solid fa-map-location-dot"></i></span>
+                    <div>
+                      <span class="item-title">Clubs & Global Map</span>
+                      <span class="item-desc">Interactive mountain peaks, coordinates & UIAA clubs</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item-alpine" data-view="view-camps" onclick="switchSpaView('view-camps')">
+                    <span class="item-icon"><i class="fa-solid fa-campground"></i></span>
+                    <div>
+                      <span class="item-title">Camp Stories</span>
+                      <span class="item-desc">High-altitude survival, base camp life & chronicles</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item-alpine" data-view="view-gallery" onclick="switchSpaView('view-gallery')">
+                    <span class="item-icon"><i class="fa-solid fa-photo-film"></i></span>
+                    <div>
+                      <span class="item-title">Visual Archive</span>
+                      <span class="item-desc">Ultra-HD photography, summit captures & video</span>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Gear & Safety -->
+            <li class="nav-item">
+              <a class="nav-link" data-view="view-safety" onclick="switchSpaView('view-safety')">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>Gear & Safety</span>
+              </a>
+            </li>
+
+          </ul>
+
+          <!-- Action Controls Suite (Straightline flex-nowrap) -->
+          <div class="d-flex align-items-center flex-nowrap gap-2 mt-2 mt-lg-0 ms-lg-auto">
+            
+            <!-- Quick Search Button -->
+            <button class="btn btn-navbar-search d-none d-md-inline-flex" type="button" data-bs-toggle="modal" data-bs-target="#quickSearchModal" title="Quick Search (Ctrl+K)">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <span class="d-none d-xxl-inline">Search</span>
+              <kbd class="navbar-kbd">Ctrl K</kbd>
+            </button>
+
+            <!-- Theme Switcher Dropdown -->
+            <div class="dropdown" id="themeSwitcherWrapper">
+              <button class="btn btn-outline-alpine-theme btn-sm rounded-pill px-3 py-2 fw-semibold d-flex align-items-center gap-2 dropdown-toggle" 
+                      type="button" 
+                      id="themeDropdownBtn" 
+                      data-bs-toggle="dropdown" 
+                      aria-expanded="false" 
+                      title="Switch Portal Theme">
+                <i class="fa-solid fa-palette text-primary" id="theme-active-icon"></i>
+                <span class="d-none d-xxl-inline" id="theme-active-label">Sunset Alpenglow</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-alpine shadow-lg p-2" aria-labelledby="themeDropdownBtn">
+                <li class="dropdown-header text-uppercase fw-bold pb-2" style="font-size: 0.7rem; letter-spacing: 0.1em;">
+                  <i class="fa-solid fa-mountain me-1"></i> Choose Theme
+                </li>
+                <li>
+                  <button class="dropdown-item theme-option-btn rounded-3 d-flex align-items-center justify-content-between py-2 px-3 mb-1" 
+                          onclick="setPortalTheme('sunset')" data-theme-value="sunset">
+                    <span class="d-flex align-items-center gap-2">
+                      <span class="theme-color-preview preview-sunset"></span>
+                      <span>Sunset Alpenglow</span>
+                    </span>
+                    <i class="fa-solid fa-check text-warning check-icon"></i>
+                  </button>
+                </li>
+                <li>
+                  <button class="dropdown-item theme-option-btn rounded-3 d-flex align-items-center justify-content-between py-2 px-3 mb-1" 
+                          onclick="setPortalTheme('snow')" data-theme-value="snow">
+                    <span class="d-flex align-items-center gap-2">
+                      <span class="theme-color-preview preview-snow"></span>
+                      <span>Snow Peak Light</span>
+                    </span>
+                    <i class="fa-solid fa-check text-primary check-icon"></i>
+                  </button>
+                </li>
+                <li>
+                  <button class="dropdown-item theme-option-btn rounded-3 d-flex align-items-center justify-content-between py-2 px-3 mb-1" 
+                          onclick="setPortalTheme('forest')" data-theme-value="forest">
+                    <span class="d-flex align-items-center gap-2">
+                      <span class="theme-color-preview preview-forest"></span>
+                      <span>Alpine Evergreen</span>
+                    </span>
+                    <i class="fa-solid fa-check text-success check-icon"></i>
+                  </button>
+                </li>
+                <li>
+                  <button class="dropdown-item theme-option-btn rounded-3 d-flex align-items-center justify-content-between py-2 px-3" 
+                          onclick="setPortalTheme('glacier')" data-theme-value="glacier">
+                    <span class="d-flex align-items-center gap-2">
+                      <span class="theme-color-preview preview-glacier"></span>
+                      <span>Glacier Dark</span>
+                    </span>
+                    <i class="fa-solid fa-check text-info check-icon"></i>
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            <!-- User Profile / Login Button -->
+            <div id="navbar-auth-section" class="d-flex align-items-center gap-2">
+              <button class="btn btn-outline-light btn-sm rounded-pill px-3 py-2 fw-semibold d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#authModal" id="btn-navbar-signin" title="Login to Portal">
+                <i class="fa-regular fa-user"></i>
+                <span class="d-none d-sm-inline">Login</span>
+              </button>
+            </div>
+
+            <!-- Booking Shortcut CTA -->
+            <button class="btn btn-primary btn-sm rounded-pill px-3 py-2 fw-bold d-flex align-items-center gap-2 btn-shimmer" onclick="switchSpaView('view-booking')">
+              <i class="fa-solid fa-compass"></i>
+              <span>Book Climb</span>
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       SPA VIEW 1: HOME & ACTIVITY HUB
+       ============================================================ -->
+  <main>
+    <div class="spa-view active-view" id="view-home">
+      
+      <!-- Hero Banner -->
+      <section class="hero-section mb-5">
+        <div class="hero-overlay"></div>
+        <!-- Particle Canvas (snow/dust effect) -->
+        <canvas id="hero-particles" aria-hidden="true"></canvas>
+        <div class="container hero-content text-center text-lg-start">
+          <div class="row align-items-center gy-5">
+            <div class="col-lg-8">
+              
+              <div class="hero-pill-badge mb-3 floating-hero-badge">
+                <i class="fa-solid fa-award me-2 text-warning"></i>
+                Setting Guiding Standards Across the 7 Continents Since 1986
+              </div>
+
+              <h1 class="hero-title text-white mb-3">
+                UNPARALLELED <span class="text-gradient-ice">MOUNTAIN ADVENTURES</span> ARE WHAT WE DO.
+              </h1>
+
+              <p class="hero-lead mb-4">
+                Alpine Ascents is a leader in the Mountaineering and Climbing industry and has been instrumental in setting guiding standards in the international climbing community. Our mission is simple: by using the best climbing talent in the country, we offer the opportunity for climbers at all levels to achieve their personal aspirations through quality, challenging, safe, and fun expeditions.
+              </p>
+
+              <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start mb-4">
+                <button class="btn btn-primary btn-lg rounded-pill px-4 py-3 fw-bold btn-shimmer shadow-lg" onclick="switchSpaView('view-booking')">
+                  <i class="fa-solid fa-ticket me-2"></i> Book an Expedition
+                </button>
+                <button class="btn btn-outline-light btn-lg rounded-pill px-4 py-3 fw-semibold" onclick="switchSpaView('view-map')">
+                  <i class="fa-solid fa-location-crosshairs me-2 text-primary"></i> Find Nearest Alpine Club
+                </button>
+                <button class="btn btn-dark-glass btn-lg rounded-pill px-4 py-3 fw-semibold text-white border border-secondary" onclick="switchSpaView('view-disciplines')">
+                  <i class="fa-solid fa-book-open me-2 text-warning"></i> Explore Skills Guide
+                </button>
+              </div>
+
+              <!-- Quick Live Stats -->
+              <div class="row g-3 text-start">
+                <div class="col-6 col-md-3">
+                  <div class="hero-stat-card">
+                    <div class="text-primary fs-3 fw-black font-heading mb-0 stat-counter" data-target="100" data-suffix="%">0%</div>
+                    <small class="text-white-50">IFMGA Certified Guides</small>
+                  </div>
+                </div>
+                <div class="col-6 col-md-3">
+                  <div class="hero-stat-card">
+                    <div class="text-warning fs-3 fw-black font-heading mb-0 stat-counter" data-target="7" data-prefix="" data-suffix=" / 7">0 / 7</div>
+                    <small class="text-white-50">Seven Summits Program</small>
+                  </div>
+                </div>
+                <div class="col-6 col-md-3">
+                  <div class="hero-stat-card">
+                    <div class="text-primary fs-3 fw-black font-heading mb-0 stat-counter" data-target="94" data-suffix=".2%">0%</div>
+                    <small class="text-white-50">Expedition Summit Rate</small>
+                  </div>
+                </div>
+                <div class="col-6 col-md-3">
+                  <div class="hero-stat-card">
+                    <div class="text-success fs-3 fw-black font-heading mb-0 stat-counter" data-target="38" data-suffix="+ Yrs">0+ Yrs</div>
+                    <small class="text-white-50">Pioneering High Altitude</small>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Featured Expedition Spotlight Card -->
+            <div class="col-lg-4">
+              <div class="card card-alpine p-4 shadow-lg border-primary border-opacity-25">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="badge bg-warning text-dark fw-bold px-3 py-1">2027 EXPEDITIONS</span>
+                  <span class="text-white-50 small"><i class="fa-solid fa-lock text-success me-1"></i> Verified Slots</span>
+                </div>
+                <h4 class="text-white fw-bold mb-2">Plan Your High-Altitude Ascent</h4>
+                <p class="text-white-50 small mb-3">From Mount Rainier mountaineering school to Everest South Col summits. Clear medical screening and secure your spot today.</p>
+                
+                <div class="list-group list-group-flush bg-transparent mb-3">
+                  <div class="list-group-item bg-transparent text-white-70 px-0 py-2 border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
+                    <span><i class="fa-solid fa-mountain text-primary me-2"></i> Everest South Col</span>
+                    <span class="badge bg-primary-subtle text-primary">May Window</span>
+                  </div>
+                  <div class="list-group-item bg-transparent text-white-70 px-0 py-2 border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
+                    <span><i class="fa-solid fa-mountain text-primary me-2"></i> Denali West Buttress</span>
+                    <span class="badge bg-primary-subtle text-primary">June Window</span>
+                  </div>
+                  <div class="list-group-item bg-transparent text-white-70 px-0 py-2 border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
+                    <span><i class="fa-solid fa-mountain text-primary me-2"></i> Mont Blanc Traverse</span>
+                    <span class="badge bg-primary-subtle text-primary">July Window</span>
+                  </div>
+                </div>
+
+                <button class="btn btn-primary w-100 rounded-pill py-2 fw-bold" onclick="switchSpaView('view-booking')">
+                  <i class="fa-solid fa-calculator me-2"></i> Open Booking Studio
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Mountaineering Overview Section -->
+      <section class="py-4">
+        <div class="container">
+          <div class="row align-items-center gy-4 mb-5">
+            <div class="col-lg-6">
+              <span class="section-tag">THE ART & ETHOS OF HIGH ALTITUDE</span>
+              <h2 class="section-title mb-4">What is Mountaineering?</h2>
+              <p class="lead text-white-80 mb-3">
+                Mountaineering, also called mountain climbing, is the sport of attaining, or attempting to attain, high points in mountainous regions, mainly for the pleasure of the climb.
+              </p>
+              <p class="text-white-70 mb-3">
+                Although the term is often loosely applied to walking up low mountains that offer only moderate difficulties, it is more properly restricted to climbing in localities where the terrain and weather conditions present such hazards that, for safety, a certain amount of previous experience will be found necessary. For the untrained, mountaineering is a dangerous pastime.
+              </p>
+              <p class="text-white-70 mb-4">
+                Unlike most sports, mountaineering lacks widely-applied formal rules, regulations, and governance; mountaineers adhere to a large variety of techniques and philosophies when climbing mountains.
+              </p>
+
+              <div class="row g-3">
+                <div class="col-sm-6">
+                  <div class="p-3 rounded-4 card-alpine border h-100">
+                    <i class="fa-solid fa-shield-halved text-primary fa-xl mb-2"></i>
+                    <h6 class="fw-bold text-white mb-1">Risk Management</h6>
+                    <small class="text-white-50">Mastering objective hazards, weather barometers, and glacier movements.</small>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="p-3 rounded-4 card-alpine border h-100">
+                    <i class="fa-solid fa-hand-holding-heart text-warning fa-xl mb-2"></i>
+                    <h6 class="fw-bold text-white mb-1">Mountain Ethics</h6>
+                    <small class="text-white-50">Adhering to UIAA ethical declarations and Leave-No-Trace environmental preservation.</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="position-relative rounded-4 overflow-hidden shadow-lg border border-primary border-opacity-25">
+                <img src="assets/images/ice-climb.jpg" alt="Mountaineer scaling vertical ice wall" class="w-100 object-fit-cover" style="max-height: 480px;">
+                <div class="position-absolute bottom-0 start-0 w-100 p-4" style="background: linear-gradient(to top, rgba(7,13,24,0.95), transparent);">
+                  <span class="badge bg-warning text-dark fw-bold px-3 py-1 mb-2">TECHNICAL MASTERY</span>
+                  <h5 class="text-white fw-bold mb-1">Precision On Steep Glacier Ice</h5>
+                  <p class="text-white-70 small mb-0">Every ascent requires meticulous preparation, high-angle crampon technique, and team trust.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4K Mountain Showcase Mosaic: The World's Most Iconic Summits -->
+          <div class="mb-5 py-4">
+            <div class="d-flex flex-wrap justify-content-between align-items-end mb-4 gap-2">
+              <div>
+                <span class="section-tag">LEGENDARY EXPEDITION TARGETS</span>
+                <h2 class="section-title mb-1">World's Premier 4K Summit Showcase</h2>
+                <p class="text-white-70 small mb-0">Explore the world's most revered mountain summits, technical difficulty tiers, and historic routes.</p>
+              </div>
+              <button class="btn btn-outline-light btn-sm rounded-pill px-3" onclick="switchSpaView('view-camps')">
+                <i class="fa-solid fa-compass me-1"></i> View All Expeditions
+              </button>
+            </div>
+
+            <div class="row g-4">
+              <!-- Summit 1: Everest -->
+              <div class="col-md-6 col-lg-4">
+                <div class="summit-card h-100 d-flex flex-column">
+                  <div class="summit-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=80" alt="Mount Everest Summit">
+                    <div class="summit-img-overlay"></div>
+                    <span class="position-absolute top-3 end-3 badge bg-danger text-white fw-bold px-3 py-2 shadow-sm">
+                      <i class="fa-solid fa-mountain me-1"></i> 8,848.86 m
+                    </span>
+                    <span class="position-absolute bottom-3 start-3 badge bg-primary px-2 py-1 small">
+                      Himalayas, Nepal/Tibet
+                    </span>
+                  </div>
+                  <div class="p-4 d-flex flex-column flex-grow-1">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                      <h5 class="fw-bold text-white mb-0">Mount Everest</h5>
+                      <span class="badge bg-warning-subtle text-warning-emphasis">Grade VI / Death Zone</span>
+                    </div>
+                    <p class="text-white-70 small mb-3">Roof of the world. The pinnacle test of human endurance, atmospheric adaptation, and courage above 8,000 meters.</p>
+                    <div class="mt-auto pt-3 border-top border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
+                      <span class="text-white-50 small"><i class="fa-solid fa-route text-primary me-1"></i> South Col Route</span>
+                      <button class="btn btn-sm btn-primary rounded-pill px-3" onclick="selectExpeditionForBooking('everest')">Reserve Slot</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Summit 2: K2 -->
+              <div class="col-md-6 col-lg-4">
+                <div class="summit-card h-100 d-flex flex-column">
+                  <div class="summit-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80" alt="K2 Savage Mountain">
+                    <div class="summit-img-overlay"></div>
+                    <span class="position-absolute top-3 end-3 badge bg-danger text-white fw-bold px-3 py-2 shadow-sm">
+                      <i class="fa-solid fa-mountain me-1"></i> 8,611 m
+                    </span>
+                    <span class="position-absolute bottom-3 start-3 badge bg-primary px-2 py-1 small">
+                      Karakoram, Pakistan
+                    </span>
+                  </div>
+                  <div class="p-4 d-flex flex-column flex-grow-1">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                      <h5 class="fw-bold text-white mb-0">K2 (Savage Mountain)</h5>
+                      <span class="badge bg-danger-subtle text-danger">Grade VII Extreme</span>
+                    </div>
+                    <p class="text-white-70 small mb-3">The mountaineer's mountain. Unforgiving technical mixed rock, hurricane winds, and the infamous Bottleneck serac corridor.</p>
+                    <div class="mt-auto pt-3 border-top border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
+                      <span class="text-white-50 small"><i class="fa-solid fa-route text-primary me-1"></i> Abruzzi Spur</span>
+                      <button class="btn btn-sm btn-outline-light rounded-pill px-3" onclick="switchSpaView('view-records')">View Records</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Summit 3: Matterhorn -->
+              <div class="col-md-6 col-lg-4">
+                <div class="summit-card h-100 d-flex flex-column">
+                  <div class="summit-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=1200&q=80" alt="Matterhorn Peak">
+                    <div class="summit-img-overlay"></div>
+                    <span class="position-absolute top-3 end-3 badge bg-warning text-dark fw-bold px-3 py-2 shadow-sm">
+                      <i class="fa-solid fa-mountain me-1"></i> 4,478 m
+                    </span>
+                    <span class="position-absolute bottom-3 start-3 badge bg-primary px-2 py-1 small">
+                      Pennine Alps, Switzerland
+                    </span>
+                  </div>
+                  <div class="p-4 d-flex flex-column flex-grow-1">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                      <h5 class="fw-bold text-white mb-0">Matterhorn</h5>
+                      <span class="badge bg-warning-subtle text-warning-emphasis">Grade AD+ Technical</span>
+                    </div>
+                    <p class="text-white-70 small mb-3">The jewel of Switzerland. A four-faceted pyramid demanding technical agility on sheer Moseley granite slabs.</p>
+                    <div class="mt-auto pt-3 border-top border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
+                      <span class="text-white-50 small"><i class="fa-solid fa-route text-primary me-1"></i> Hörnli Ridge</span>
+                      <button class="btn btn-sm btn-primary rounded-pill px-3" onclick="selectExpeditionForBooking('matterhorn')">Reserve Slot</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Summit 4: Denali -->
+              <div class="col-md-6 col-lg-4">
+                <div class="summit-card h-100 d-flex flex-column">
+                  <div class="summit-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1544198365-f5d60b6d8190?auto=format&fit=crop&w=1200&q=80" alt="Denali Mountain">
+                    <div class="summit-img-overlay"></div>
+                    <span class="position-absolute top-3 end-3 badge bg-primary text-white fw-bold px-3 py-2 shadow-sm">
+                      <i class="fa-solid fa-mountain me-1"></i> 6,190 m
+                    </span>
+                    <span class="position-absolute bottom-3 start-3 badge bg-primary px-2 py-1 small">
+                      Alaska Range, USA
+                    </span>
+                  </div>
+                  <div class="p-4 d-flex flex-column flex-grow-1">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                      <h5 class="fw-bold text-white mb-0">Denali (Mount McKinley)</h5>
+                      <span class="badge bg-primary-subtle text-primary">Arctic Expedition</span>
+                    </div>
+                    <p class="text-white-70 small mb-3">North America's crown. Extreme sub-zero temperatures, sled hauling, and high-latitude barometric pressure drops.</p>
+                    <div class="mt-auto pt-3 border-top border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
+                      <span class="text-white-50 small"><i class="fa-solid fa-route text-primary me-1"></i> West Buttress</span>
+                      <button class="btn btn-sm btn-primary rounded-pill px-3" onclick="selectExpeditionForBooking('denali')">Reserve Slot</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Summit 5: Mont Blanc -->
+              <div class="col-md-6 col-lg-4">
+                <div class="summit-card h-100 d-flex flex-column">
+                  <div class="summit-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1200&q=80" alt="Mont Blanc Summit">
+                    <div class="summit-img-overlay"></div>
+                    <span class="position-absolute top-3 end-3 badge bg-info text-dark fw-bold px-3 py-2 shadow-sm">
+                      <i class="fa-solid fa-mountain me-1"></i> 4,808 m
+                    </span>
+                    <span class="position-absolute bottom-3 start-3 badge bg-primary px-2 py-1 small">
+                      Chamonix, France / Italy
+                    </span>
+                  </div>
+                  <div class="p-4 d-flex flex-column flex-grow-1">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                      <h5 class="fw-bold text-white mb-0">Mont Blanc</h5>
+                      <span class="badge bg-info-subtle text-info">Classic Alpinism</span>
+                    </div>
+                    <p class="text-white-70 small mb-3">The cradle of mountaineering. Knife-edge Bosses snow ridges overlooking the breathtaking Chamonix valley.</p>
+                    <div class="mt-auto pt-3 border-top border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
+                      <span class="text-white-50 small"><i class="fa-solid fa-route text-primary me-1"></i> Goûter Ridge Route</span>
+                      <button class="btn btn-sm btn-primary rounded-pill px-3" onclick="selectExpeditionForBooking('montblanc')">Reserve Slot</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Summit 6: Ama Dablam -->
+              <div class="col-md-6 col-lg-4">
+                <div class="summit-card h-100 d-flex flex-column">
+                  <div class="summit-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&w=1200&q=80" alt="Ama Dablam Crest">
+                    <div class="summit-img-overlay"></div>
+                    <span class="position-absolute top-3 end-3 badge bg-warning text-dark fw-bold px-3 py-2 shadow-sm">
+                      <i class="fa-solid fa-mountain me-1"></i> 6,812 m
+                    </span>
+                    <span class="position-absolute bottom-3 start-3 badge bg-primary px-2 py-1 small">
+                      Khumbu, Nepal
+                    </span>
+                  </div>
+                  <div class="p-4 d-flex flex-column flex-grow-1">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                      <h5 class="fw-bold text-white mb-0">Ama Dablam</h5>
+                      <span class="badge bg-warning-subtle text-warning-emphasis">Grade TD Technical</span>
+                    </div>
+                    <p class="text-white-70 small mb-3">The Mother's Necklace. Soaring granite spires and hanging glaciers forming one of the most stunning peaks on Earth.</p>
+                    <div class="mt-auto pt-3 border-top border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
+                      <span class="text-white-50 small"><i class="fa-solid fa-route text-primary me-1"></i> SW Ridge Route</span>
+                      <button class="btn btn-sm btn-outline-light rounded-pill px-3" onclick="switchSpaView('view-gallery')">View Gallery</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Activity Hub: Clear, Uncluttered Launchpad for All Activities -->
+          <div class="mb-5">
+            <div class="text-center section-header mb-4">
+              <span class="section-tag">EXPLORE BY ACTIVITY</span>
+              <h2 class="section-title">Mountaineering Activity Hub</h2>
+              <p class="text-white-70 max-w-700 mx-auto">Select any activity module below to open its dedicated view with detailed information, interactive maps, or booking options.</p>
+            </div>
+
+            <div class="row g-4">
+              <!-- Activity 1: History -->
+              <div class="col-md-6 col-lg-4">
+                <div class="activity-card" onclick="switchSpaView('view-history')">
+                  <div class="activity-icon-wrap">
+                    <i class="fa-solid fa-timeline"></i>
+                  </div>
+                  <h5 class="text-white fw-bold mb-2">History & Heritage</h5>
+                  <p class="text-white-70 small mb-3">Trace the golden age of alpinism, first 8000m conquests, and modern extreme speed records.</p>
+                  <div class="mt-auto pt-2 text-primary small fw-semibold d-flex align-items-center gap-1">
+                    <span>View Timeline</span> <i class="fa-solid fa-arrow-right"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Activity 2: Disciplines & Skills -->
+              <div class="col-md-6 col-lg-4">
+                <div class="activity-card" onclick="switchSpaView('view-disciplines')">
+                  <div class="activity-icon-wrap">
+                    <i class="fa-solid fa-person-hiking"></i>
+                  </div>
+                  <h5 class="text-white fw-bold mb-2">Disciplines & Skills</h5>
+                  <p class="text-white-70 small mb-3">Explore alpine vs expedition styles, self-arrest, crevasse rescue, sheltering, and hazards.</p>
+                  <div class="mt-auto pt-2 text-primary small fw-semibold d-flex align-items-center gap-1">
+                    <span>Explore Skills</span> <i class="fa-solid fa-arrow-right"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Activity 3: Records -->
+              <div class="col-md-6 col-lg-4">
+                <div class="activity-card" onclick="switchSpaView('view-records')">
+                  <div class="activity-icon-wrap">
+                    <i class="fa-solid fa-trophy"></i>
+                  </div>
+                  <h5 class="text-white fw-bold mb-2">World Records</h5>
+                  <p class="text-white-70 small mb-3">Search records for all 14x 8000m giants, Everest records, winter firsts, and solo speed ascents.</p>
+                  <div class="mt-auto pt-2 text-primary small fw-semibold d-flex align-items-center gap-1">
+                    <span>Search Records</span> <i class="fa-solid fa-arrow-right"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Activity 4: Clubs & Map -->
+              <div class="col-md-6 col-lg-4">
+                <div class="activity-card" onclick="switchSpaView('view-map')">
+                  <div class="activity-icon-wrap">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                  </div>
+                  <h5 class="text-white fw-bold mb-2">Global Clubs & Map</h5>
+                  <p class="text-white-70 small mb-3">Interactive Leaflet map with HTML5 Geolocation API to detect your position and nearest alpine club.</p>
+                  <div class="mt-auto pt-2 text-primary small fw-semibold d-flex align-items-center gap-1">
+                    <span>Launch Map</span> <i class="fa-solid fa-arrow-right"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Activity 5: Camps & Expeditions -->
+              <div class="col-md-6 col-lg-4">
+                <div class="activity-card" onclick="switchSpaView('view-camps')">
+                  <div class="activity-icon-wrap">
+                    <i class="fa-solid fa-campground"></i>
+                  </div>
+                  <h5 class="text-white fw-bold mb-2">Camp Success Stories</h5>
+                  <p class="text-white-70 small mb-3">Read true summit accounts from Everest, Denali, Mont Blanc, and Aconcagua organized camps.</p>
+                  <div class="mt-auto pt-2 text-primary small fw-semibold d-flex align-items-center gap-1">
+                    <span>Read Stories</span> <i class="fa-solid fa-arrow-right"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Activity 6: Gear & Safety -->
+              <div class="col-md-6 col-lg-4">
+                <div class="activity-card" onclick="switchSpaView('view-safety')">
+                  <div class="activity-icon-wrap">
+                    <i class="fa-solid fa-shield-halved"></i>
+                  </div>
+                  <h5 class="text-white fw-bold mb-2">Gear, Innovations & Safety</h5>
+                  <p class="text-white-70 small mb-3">Latest Aerogel technology, international distress signals, and interactive gear checklist.</p>
+                  <div class="mt-auto pt-2 text-primary small fw-semibold d-flex align-items-center gap-1">
+                    <span>Safety Checklist</span> <i class="fa-solid fa-arrow-right"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ============================================================
+         SPA VIEW 2: HISTORY OF MOUNTAINEERING
+         ============================================================ -->
+    <div class="spa-view" id="view-history">
+      <div class="view-header-banner">
+        <div class="view-header-banner-bg"></div>
+        <div class="container">
+          <div class="view-breadcrumb">
+            <a onclick="switchSpaView('view-home')">Home</a> <i class="fa-solid fa-chevron-right fa-xs"></i> <span>History & Heritage</span>
+          </div>
+          <h1 class="text-white fw-bold mb-2">History of Mountaineering</h1>
+          <p class="text-white-70 mb-0">From 18th-century Enlightenment pioneers in Chamonix to modern speed records across the Himalayan Death Zone.</p>
+        </div>
+      </div>
+
+      <div class="container pb-5">
+                <!-- The Four Golden Eras of Mountaineering -->
+        <div class="mb-5">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <i class="fa-solid fa-crown text-warning fa-lg"></i>
+            <h4 class="fw-bold text-white mb-0">The Four Golden Eras of Alpinism</h4>
+          </div>
+          <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+              <div class="era-card h-100 d-flex flex-column">
+                <div class="era-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=800&q=80" alt="Enlightenment Alpinism">
+                  <span class="position-absolute top-2 start-2 badge bg-warning text-dark fw-bold">1786 – 1850</span>
+                </div>
+                <div class="p-3 d-flex flex-column flex-grow-1">
+                  <h6 class="fw-bold text-white mb-1">Enlightenment Alpinism</h6>
+                  <p class="text-white-70 small mb-0">Balmat & Paccard summit Mont Blanc. Scientists and romantic explorers venture onto glaciers for natural philosophy and mapmaking.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="era-card h-100 d-flex flex-column">
+                <div class="era-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=800&q=80" alt="Golden Age">
+                  <span class="position-absolute top-2 start-2 badge bg-primary text-white fw-bold">1854 – 1865</span>
+                </div>
+                <div class="p-3 d-flex flex-column flex-grow-1">
+                  <h6 class="fw-bold text-white mb-1">The Alpine Golden Age</h6>
+                  <p class="text-white-70 small mb-0">Wills climbs Wetterhorn; Whymper conquers Matterhorn. The formation of the Alpine Club (1857) transforms mountaineering into an elite sport.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="era-card h-100 d-flex flex-column">
+                <div class="era-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80" alt="Himalayan Era">
+                  <span class="position-absolute top-2 start-2 badge bg-danger text-white fw-bold">1950 – 1964</span>
+                </div>
+                <div class="p-3 d-flex flex-column flex-grow-1">
+                  <h6 class="fw-bold text-white mb-1">The 8000m Epoch</h6>
+                  <p class="text-white-70 small mb-0">Herzog on Annapurna, Hillary & Tenzing on Everest, Compagnoni & Lacedelli on K2. National expeditions conquer all 14 giants.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="era-card h-100 d-flex flex-column">
+                <div class="era-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=800&q=80" alt="Modern Speed Revolution">
+                  <span class="position-absolute top-2 start-2 badge bg-success text-white fw-bold">1978 – Present</span>
+                </div>
+                <div class="p-3 d-flex flex-column flex-grow-1">
+                  <h6 class="fw-bold text-white mb-1">Alpine Style & Speed</h6>
+                  <p class="text-white-70 small mb-0">Messner ascends Everest without O2; Polish winter warriors; Nimsdai's 14/7 push, and the historic 2021 winter K2 ascent.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <i class="fa-solid fa-timeline text-primary fa-lg"></i>
+          <h4 class="fw-bold text-white mb-0">Chronological Milestones & Historic Breakthroughs</h4>
+        </div>
+
+        <div class="timeline-container" id="history-timeline-container">
+          <!-- Dynamically Populated by app.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         SPA VIEW 3: DISCIPLINES & SKILLS (CLEAN TABBED SUB-PAGES)
+         ============================================================ -->
+    <div class="spa-view" id="view-disciplines">
+      <div class="view-header-banner">
+        <div class="view-header-banner-bg"></div>
+        <div class="container">
+          <div class="view-breadcrumb">
+            <a onclick="switchSpaView('view-home')">Home</a> <i class="fa-solid fa-chevron-right fa-xs"></i> <span>Alpinism Disciplines & Skills</span>
+          </div>
+          <h1 class="text-white fw-bold mb-2">Disciplines, Techniques & Shelters</h1>
+          <p class="text-white-70 mb-4">Explore climbing styles, survival sheltering, technical ropework, and objective hazard mitigation.</p>
+          
+          <!-- Sub-Nav Switcher Tabs (Zero Clutter!) -->
+          <div class="sub-nav-pills" id="disciplineTabPills">
+            <button class="sub-nav-pill-btn active" data-subtab="subtab-styles" onclick="switchDisciplineTab('subtab-styles')">
+              <i class="fa-solid fa-layer-group me-1"></i> Types & Styles
+            </button>
+            <button class="sub-nav-pill-btn" data-subtab="subtab-techniques" onclick="switchDisciplineTab('subtab-techniques')">
+              <i class="fa-solid fa-person-hiking me-1"></i> Technical Skills
+            </button>
+            <button class="sub-nav-pill-btn" data-subtab="subtab-shelters" onclick="switchDisciplineTab('subtab-shelters')">
+              <i class="fa-solid fa-tents me-1"></i> Sheltering Systems
+            </button>
+            <button class="sub-nav-pill-btn" data-subtab="subtab-hazards" onclick="switchDisciplineTab('subtab-hazards')">
+              <i class="fa-solid fa-triangle-exclamation me-1"></i> Hazards & Risks
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="container pb-5">
+        <!-- Sub-Tab 1: Types & Styles -->
+        <div class="discipline-subtab-pane active" id="subtab-styles">
+          <div class="mb-4">
+            <h4 class="fw-bold text-white mb-1">Mountaineering Types & Styles</h4>
+            <p class="text-white-70 small">Whether moving fast-and-light alpine style or engineering multi-camp siege expeditions, each style demands distinct tactical preparations.</p>
+          </div>
+          <div class="row g-4" id="styles-cards-container">
+            <!-- Populated by app.js -->
+          </div>
+        </div>
+
+        <!-- Sub-Tab 2: Techniques -->
+        <div class="discipline-subtab-pane d-none" id="subtab-techniques">
+          <div class="mb-4">
+            <h4 class="fw-bold text-white mb-1">Technical Climbing Protocols & Ropework</h4>
+            <p class="text-white-70 small">Mastering the systems that keep climbers alive in high-angle snow, glaciated ice falls, and severe mountain storms.</p>
+          </div>
+          <!-- Key Technical Disciplines Photographic Overview -->
+          <div class="row g-3 mb-4">
+            <div class="col-6 col-md-3">
+              <div class="position-relative rounded-4 overflow-hidden shadow-sm" style="height: 160px;">
+                <img src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=600&q=80" alt="Glacier Travel" class="w-100 h-100 object-fit-cover">
+                <div class="position-absolute inset-0 p-2 d-flex flex-column justify-content-end" style="background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);">
+                  <span class="badge bg-primary mb-1 align-self-start small">Ropework</span>
+                  <small class="text-white fw-semibold">Glacier & Crevasse Rigging</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="position-relative rounded-4 overflow-hidden shadow-sm" style="height: 160px;">
+                <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=600&q=80" alt="Ice Climbing" class="w-100 h-100 object-fit-cover">
+                <div class="position-absolute inset-0 p-2 d-flex flex-column justify-content-end" style="background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);">
+                  <span class="badge bg-info mb-1 align-self-start small">Steep Ice</span>
+                  <small class="text-white fw-semibold">French & German Footwork</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="position-relative rounded-4 overflow-hidden shadow-sm" style="height: 160px;">
+                <img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=600&q=80" alt="Self-Arrest" class="w-100 h-100 object-fit-cover">
+                <div class="position-absolute inset-0 p-2 d-flex flex-column justify-content-end" style="background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);">
+                  <span class="badge bg-warning text-dark mb-1 align-self-start small">Survival</span>
+                  <small class="text-white fw-semibold">Ice Axe Self-Arrest Maneuver</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="position-relative rounded-4 overflow-hidden shadow-sm" style="height: 160px;">
+                <img src="https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=600&q=80" alt="Acclimatization" class="w-100 h-100 object-fit-cover">
+                <div class="position-absolute inset-0 p-2 d-flex flex-column justify-content-end" style="background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);">
+                  <span class="badge bg-success mb-1 align-self-start small">Physiology</span>
+                  <small class="text-white fw-semibold">Acclimatization Protocols</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion accordion-alpine" id="techniques-accordion">
+            <!-- Populated by app.js -->
+          </div>
+        </div>
+
+        <!-- Sub-Tab 3: Sheltering -->
+        <div class="discipline-subtab-pane d-none" id="subtab-shelters">
+          <div class="mb-4">
+            <h4 class="fw-bold text-white mb-1">Mountain Sheltering Systems</h4>
+            <p class="text-white-70 small">From 4-season geodesic expedition domes standing against 120 km/h blizzards to emergency snow caves carved into glacial bergschrunds.</p>
+          </div>
+          <div class="row g-4" id="sheltering-cards-container">
+            <!-- Populated by app.js -->
+          </div>
+        </div>
+
+        <!-- Sub-Tab 4: Hazards -->
+        <div class="discipline-subtab-pane d-none" id="subtab-hazards">
+          <div class="mb-4">
+            <h4 class="fw-bold text-white mb-1">Objective & Subjective Hazards</h4>
+            <p class="text-white-70 small">Objective threats from natural elements (avalanches, crevasses, rockfall) versus subjective threats from human physiology and decision fatigue.</p>
+          </div>
+          <div class="row g-4" id="hazards-container">
+            <!-- Populated by app.js -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         SPA VIEW 4: WORLD RECORDS & MILESTONES
+         ============================================================ -->
+    <div class="spa-view" id="view-records">
+      <div class="view-header-banner">
+        <div class="view-header-banner-bg"></div>
+        <div class="container">
+          <div class="view-breadcrumb">
+            <a onclick="switchSpaView('view-home')">Home</a> <i class="fa-solid fa-chevron-right fa-xs"></i> <span>World Records</span>
+          </div>
+          <h1 class="text-white fw-bold mb-2">World Mountaineering Records</h1>
+          <p class="text-white-70 mb-0">Search historical achievements, speed ascents, winter milestones, and eight-thousander records.</p>
+        </div>
+      </div>
+
+      <!-- Record Holders Visual Row -->
+      <div class="container mb-4">
+        <div class="row g-3">
+          <div class="col-6 col-md-3">
+            <div class="position-relative rounded-4 overflow-hidden shadow" style="height: 180px;">
+              <img src="https://images.unsplash.com/photo-1522163182402-834f871fd851?auto=format&fit=crop&w=600&q=80" alt="Matterhorn" class="w-100 h-100 object-fit-cover">
+              <div class="position-absolute inset-0 p-2 d-flex flex-column justify-content-end" style="background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);">
+                <span class="badge bg-warning text-dark mb-1 small">Switzerland</span>
+                <small class="text-white fw-semibold">Matterhorn (4,478 m)</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="position-relative rounded-4 overflow-hidden shadow" style="height: 180px;">
+              <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=600&q=80" alt="Kilimanjaro" class="w-100 h-100 object-fit-cover">
+              <div class="position-absolute inset-0 p-2 d-flex flex-column justify-content-end" style="background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);">
+                <span class="badge bg-success mb-1 small">Tanzania</span>
+                <small class="text-white fw-semibold">Kilimanjaro (5,895 m)</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="position-relative rounded-4 overflow-hidden shadow" style="height: 180px;">
+              <img src="https://images.unsplash.com/photo-1544198365-f5d60b6d8190?auto=format&fit=crop&w=600&q=80" alt="Denali" class="w-100 h-100 object-fit-cover">
+              <div class="position-absolute inset-0 p-2 d-flex flex-column justify-content-end" style="background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);">
+                <span class="badge bg-primary mb-1 small">Alaska, USA</span>
+                <small class="text-white fw-semibold">Denali (6,190 m)</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="position-relative rounded-4 overflow-hidden shadow" style="height: 180px;">
+              <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=600&q=80" alt="Everest" class="w-100 h-100 object-fit-cover">
+              <div class="position-absolute inset-0 p-2 d-flex flex-column justify-content-end" style="background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);">
+                <span class="badge bg-danger mb-1 small">Nepal / Tibet</span>
+                <small class="text-white fw-semibold">Everest (8,848 m)</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container pb-5">
+        <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+          <!-- Category Filter Pills -->
+          <div class="d-flex flex-wrap gap-2">
+            <button class="btn btn-sm btn-outline-light rounded-pill records-filter-btn active" data-category="all">All Records</button>
+            <button class="btn btn-sm btn-outline-light rounded-pill records-filter-btn" data-category="8000m">14x 8000m</button>
+            <button class="btn btn-sm btn-outline-light rounded-pill records-filter-btn" data-category="everest">Everest Feats</button>
+            <button class="btn btn-sm btn-outline-light rounded-pill records-filter-btn" data-category="winter">Winter Climbs</button>
+            <button class="btn btn-sm btn-outline-light rounded-pill records-filter-btn" data-category="speed">Speed Ascents</button>
+            <button class="btn btn-sm btn-outline-light rounded-pill records-filter-btn" data-category="seven summits">Seven Summits</button>
+          </div>
+
+          <!-- Search Input -->
+          <div class="input-group input-group-sm" style="max-width: 280px;">
+            <span class="input-group-text search-input-addon"><i class="fa-solid fa-magnifying-glass"></i></span>
+            <input type="text" id="records-search-input" class="form-control form-control-alpine" placeholder="Search record, climber, peak...">
+          </div>
+        </div>
+
+        <div class="table-alpine-wrap shadow-lg">
+          <div class="table-responsive">
+            <table class="table table-alpine">
+              <thead>
+                <tr>
+                  <th style="min-width: 220px;">Record Title</th>
+                  <th style="min-width: 180px;">Record Holder</th>
+                  <th style="min-width: 160px;">Achievement</th>
+                  <th style="min-width: 170px;">Location / Year</th>
+                  <th style="min-width: 260px;">Significance & Details</th>
+                </tr>
+              </thead>
+              <tbody id="records-table-body">
+                <!-- Dynamically Populated by app.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         SPA VIEW 5: GLOBAL CLUBS & INTERACTIVE GEOLOCATION MAP
+         ============================================================ -->
+    <div class="spa-view" id="view-map">
+      <div class="view-header-banner">
+        <div class="view-header-banner-bg"></div>
+        <div class="container">
+          <div class="view-breadcrumb">
+            <a onclick="switchSpaView('view-home')">Home</a> <i class="fa-solid fa-chevron-right fa-xs"></i> <span>Global Clubs & GeoLocation</span>
+          </div>
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <div>
+              <h1 class="text-white fw-bold mb-2">Global Alpine Clubs & GeoLocation Map</h1>
+              <p class="text-white-70 mb-0">Locate premier international mountaineering institutions and calculate distance from your coordinates.</p>
+            </div>
+            <!-- Geolocation Action Button -->
+            <button class="btn btn-primary rounded-pill px-4 py-2 fw-bold shadow btn-shimmer" id="btn-detect-location" onclick="detectUserGeoLocation()">
+              <i class="fa-solid fa-location-crosshairs me-2"></i> Detect My Location & Closest Club
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="container pb-5">
+        <!-- Live GPS Status Display -->
+        <div class="mb-3" id="geo-status-indicator"></div>
+
+        <div class="row g-4">
+          <!-- Interactive Leaflet Map -->
+          <div class="col-lg-8">
+            <div id="mountaineering-map"></div>
+            <div class="d-flex justify-content-between align-items-center mt-2 px-2 text-white-50 small">
+              <span><i class="fa-solid fa-circle-info text-primary me-1"></i> Click any pin to view club details, phone, and official portal links.</span>
+              <span><i class="fa-solid fa-satellite text-warning me-1"></i> HTML5 Geolocation API Active</span>
+            </div>
+          </div>
+
+          <!-- Clubs Directory List -->
+          <div class="col-lg-4">
+            <div class="card card-alpine p-3 h-100 d-flex flex-column" style="max-height: 520px;">
+              <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
+                <h6 class="fw-bold text-white mb-0"><i class="fa-solid fa-building-columns text-primary me-2"></i> Directory of Clubs</h6>
+                <span class="badge bg-primary text-white" id="clubs-count-badge">10 Organizations</span>
+              </div>
+              <div class="overflow-y-auto pe-1" id="clubs-directory-list" style="max-height: 440px;">
+                <!-- Dynamically Populated by map.js -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Global Mountaineering Alliances -->
+        <div class="mt-5 pt-3">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <i class="fa-solid fa-earth-americas text-primary fa-lg"></i>
+            <h4 class="fw-bold text-white mb-0">Global Alpine Federations & Alliances</h4>
+          </div>
+          <div class="row g-3">
+            <div class="col-md-6 col-lg-3">
+              <div class="federation-card p-3 h-100 d-flex flex-column">
+                <div class="d-flex align-items-center gap-2 mb-2">
+                  <span class="badge bg-primary text-white">UIAA</span>
+                  <strong class="text-white small">World Governing Body</strong>
+                </div>
+                <p class="text-white-70 small mb-3">Sets international safety certifications for climbing ropes, harnesses, and alpine medical ethics across 67 nations.</p>
+                <div class="mt-auto">
+                  <a href="https://theuiaa.org" target="_blank" class="small text-primary fw-semibold text-decoration-none">theuiaa.org <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="federation-card p-3 h-100 d-flex flex-column">
+                <div class="d-flex align-items-center gap-2 mb-2">
+                  <span class="badge bg-warning text-dark">Alpine Club (UK)</span>
+                  <strong class="text-white small">Founded 1857</strong>
+                </div>
+                <p class="text-white-70 small mb-3">The world's first mountaineering club. Historic repository of Victorian exploratory expeditions and Himalayan maps.</p>
+                <div class="mt-auto">
+                  <a href="https://www.alpine-club.org.uk" target="_blank" class="small text-primary fw-semibold text-decoration-none">alpine-club.org.uk <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="federation-card p-3 h-100 d-flex flex-column">
+                <div class="d-flex align-items-center gap-2 mb-2">
+                  <span class="badge bg-danger text-white">FFCAM (France)</span>
+                  <strong class="text-white small">Founded 1874</strong>
+                </div>
+                <p class="text-white-70 small mb-3">Guardian of Mont Blanc massif refuges and steward of French national mountaineering certifications.</p>
+                <div class="mt-auto">
+                  <a href="https://www.ffcam.fr" target="_blank" class="small text-primary fw-semibold text-decoration-none">ffcam.fr <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="federation-card p-3 h-100 d-flex flex-column">
+                <div class="d-flex align-items-center gap-2 mb-2">
+                  <span class="badge bg-info text-dark">AAC (USA)</span>
+                  <strong class="text-white small">Founded 1902</strong>
+                </div>
+                <p class="text-white-70 small mb-3">Publisher of the American Alpine Journal; provides rescue insurance and stewards public climbing conservation lands.</p>
+                <div class="mt-auto">
+                  <a href="https://americanalpineclub.org" target="_blank" class="small text-primary fw-semibold text-decoration-none">americanalpineclub.org <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         SPA VIEW 6: CAMP SUCCESS STORIES & EXPEDITIONS
+         ============================================================ -->
+    <div class="spa-view" id="view-camps">
+      <div class="view-header-banner">
+        <div class="view-header-banner-bg"></div>
+        <div class="container">
+          <div class="view-breadcrumb">
+            <a onclick="switchSpaView('view-home')">Home</a> <i class="fa-solid fa-chevron-right fa-xs"></i> <span>Camps & Expeditions</span>
+          </div>
+          <h1 class="text-white fw-bold mb-2">Camp Success Stories & Expeditions</h1>
+          <p class="text-white-70 mb-0">Real accounts from Alpine Ascents guided team expeditions across the Himalayas, Alaska Range, Andes, and the Alps.</p>
+        </div>
+      </div>
+
+      <div class="container pb-5">
+        <!-- Basecamp Life & Acclimatization Logistics 4K Photo Strip -->
+        <div class="mb-5">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <i class="fa-solid fa-campground text-primary fa-lg"></i>
+            <h4 class="fw-bold text-white mb-0">Life at High Altitude Basecamps</h4>
+          </div>
+          <div class="row g-3">
+            <div class="col-md-6 col-lg-3">
+              <div class="basecamp-feature-card h-100">
+                <div class="position-relative" style="height: 170px;">
+                  <img src="https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=800&q=80" alt="Geodesic Dome Village" class="w-100 h-100 object-fit-cover">
+                  <span class="position-absolute top-2 start-2 badge bg-primary">Living Quarters</span>
+                </div>
+                <div class="p-3">
+                  <h6 class="fw-bold text-white mb-1">Geodesic Dome Villages</h6>
+                  <p class="text-white-70 small mb-0">Insulated dining and communications tents heated by solar generators with satellite Wi-Fi links.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="basecamp-feature-card h-100">
+                <div class="position-relative" style="height: 170px;">
+                  <img src="https://images.unsplash.com/photo-1536431311719-398b6704d4cc?auto=format&fit=crop&w=800&q=80" alt="Icefall Doctors" class="w-100 h-100 object-fit-cover">
+                  <span class="position-absolute top-2 start-2 badge bg-warning text-dark">Route Engineering</span>
+                </div>
+                <div class="p-3">
+                  <h6 class="fw-bold text-white mb-1">The Icefall Doctors</h6>
+                  <p class="text-white-70 small mb-0">Specialist Sherpa teams who anchor aluminum ladders across shifting glacial crevasses every dawn.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="basecamp-feature-card h-100">
+                <div class="position-relative" style="height: 170px;">
+                  <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80" alt="Acclimatization Rotations" class="w-100 h-100 object-fit-cover">
+                  <span class="position-absolute top-2 start-2 badge bg-info text-dark">Adaptation</span>
+                </div>
+                <div class="p-3">
+                  <h6 class="fw-bold text-white mb-1">Acclimatization Rotations</h6>
+                  <p class="text-white-70 small mb-0">Multiple multi-day pushes to Camp 1 and Camp 2 to stimulate natural hemoglobin production before summit bid.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="basecamp-feature-card h-100">
+                <div class="position-relative" style="height: 170px;">
+                  <img src="https://images.unsplash.com/photo-1519904981063-b0cf448d479e?auto=format&fit=crop&w=800&q=80" alt="Emergency Medical Evac" class="w-100 h-100 object-fit-cover">
+                  <span class="position-absolute top-2 start-2 badge bg-danger text-white">Safety Net</span>
+                </div>
+                <div class="p-3">
+                  <h6 class="fw-bold text-white mb-1">Emergency Heli-Evac</h6>
+                  <p class="text-white-70 small mb-0">Eurocopter B3 high-altitude long-line rescue readiness with hyperbaric chambers stationed on site.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Success Stories Cards -->
+        <div class="mb-5">
+          <h4 class="fw-bold text-white mb-3"><i class="fa-solid fa-trophy text-warning me-2"></i> Verified Summit Success Stories</h4>
+          <div class="row g-4" id="success-stories-container">
+            <!-- Populated by app.js -->
+          </div>
+        </div>
+
+        <!-- Expeditions Catalog Overview -->
+        <div>
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+              <h4 class="fw-bold text-white mb-0"><i class="fa-solid fa-mountain text-primary me-2"></i> Guided Expeditions Catalog</h4>
+              <small class="text-white-50">Reserve your summit slot with IFMGA certified lead guides.</small>
+            </div>
+            <button class="btn btn-primary btn-sm rounded-pill px-3" onclick="switchSpaView('view-booking')">
+              <i class="fa-solid fa-calendar-check me-1"></i> Open Booking Studio
+            </button>
+          </div>
+          <div class="row g-4" id="expeditions-catalog-container">
+            <!-- Populated by app.js -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         SPA VIEW 7: GALLERY & VIDEO CINEMA
+         ============================================================ -->
+    <div class="spa-view" id="view-gallery">
+      <div class="view-header-banner">
+        <div class="view-header-banner-bg"></div>
+        <div class="container">
+          <div class="view-breadcrumb">
+            <a onclick="switchSpaView('view-home')">Home</a> <i class="fa-solid fa-chevron-right fa-xs"></i> <span>Visual Archive</span>
+          </div>
+          <h1 class="text-white fw-bold mb-2">Alpine Photo Gallery & Videos</h1>
+          <p class="text-white-70 mb-0">High-resolution photography and documentary footage from our global summits.</p>
+        </div>
+      </div>
+
+      <div class="container pb-5">
+        <!-- Photo Filters -->
+        <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+          <h5 class="fw-bold text-light-heading mb-0">High Altitude Photography</h5>
+          <div class="d-flex flex-wrap gap-2">
+            <button class="btn btn-sm btn-outline-light rounded-pill gallery-filter-btn active" data-filter="all">All</button>
+            <button class="btn btn-sm btn-outline-light rounded-pill gallery-filter-btn" data-filter="summits">Summits</button>
+            <button class="btn btn-sm btn-outline-light rounded-pill gallery-filter-btn" data-filter="technical">Technical Ice</button>
+            <button class="btn btn-sm btn-outline-light rounded-pill gallery-filter-btn" data-filter="shelters">Camps & Shelters</button>
+            <button class="btn btn-sm btn-outline-light rounded-pill gallery-filter-btn" data-filter="landscapes">Landscapes</button>
+          </div>
+        </div>
+
+        <!-- Photo Grid -->
+        <div class="row g-3 mb-5" id="gallery-items-container">
+          <!-- Populated by app.js -->
+        </div>
+
+        <!-- Video Cinema -->
+        <div>
+          <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
+            <div class="d-flex align-items-center gap-2">
+              <i class="fa-solid fa-film text-danger fa-lg"></i>
+              <h4 class="fw-bold text-white mb-0">Informative Documentary & Technique Videos</h4>
+            </div>
+          </div>
+          <div class="row g-4" id="videos-showcase-container">
+            <!-- Populated by app.js -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         SPA VIEW 8: GEAR, INNOVATIONS & SAFETY CHECKLIST
+         ============================================================ -->
+    <div class="spa-view" id="view-safety">
+      <div class="view-header-banner">
+        <div class="view-header-banner-bg"></div>
+        <div class="container">
+          <div class="view-breadcrumb">
+            <a onclick="switchSpaView('view-home')">Home</a> <i class="fa-solid fa-chevron-right fa-xs"></i> <span>Gear, Innovations & Safety</span>
+          </div>
+          <h1 class="text-white fw-bold mb-2">Material Advances & Safety Protocols</h1>
+          <p class="text-white-70 mb-0">Cutting-edge alpine hardware, the Alpinist's code, emergency codes, and interactive gear checklist.</p>
+        </div>
+      </div>
+
+      <div class="container pb-5">
+        <!-- High-Altitude Survival Equipment 4K Gallery -->
+        <div class="mb-5">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <i class="fa-solid fa-shield-halved text-success fa-lg"></i>
+            <h4 class="fw-bold text-white mb-0">High-Altitude Survival Essentials</h4>
+          </div>
+          <div class="row g-3">
+            <div class="col-6 col-md-3">
+              <div class="position-relative rounded-4 overflow-hidden shadow-sm" style="height: 180px;">
+                <img src="https://images.unsplash.com/photo-1519904981063-b0cf448d479e?auto=format&fit=crop&w=600&q=80" alt="Expedition Gear" class="w-100 h-100 object-fit-cover">
+                <div class="position-absolute inset-0 p-2 d-flex flex-column justify-content-end" style="background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);">
+                  <span class="badge bg-danger mb-1 align-self-start small">Extreme Cold</span>
+                  <small class="text-white fw-semibold">800-Fill Down Parka & Mitts</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="position-relative rounded-4 overflow-hidden shadow-sm" style="height: 180px;">
+                <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=600&q=80" alt="Ice Hardware" class="w-100 h-100 object-fit-cover">
+                <div class="position-absolute inset-0 p-2 d-flex flex-column justify-content-end" style="background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);">
+                  <span class="badge bg-primary mb-1 align-self-start small">Hardware</span>
+                  <small class="text-white fw-semibold">Titanium Crampons & Twin Axes</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="position-relative rounded-4 overflow-hidden shadow-sm" style="height: 180px;">
+                <img src="https://images.unsplash.com/photo-1517824806704-9040b037703b?auto=format&fit=crop&w=600&q=80" alt="Avalanche Beacon" class="w-100 h-100 object-fit-cover">
+                <div class="position-absolute inset-0 p-2 d-flex flex-column justify-content-end" style="background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);">
+                  <span class="badge bg-warning text-dark mb-1 align-self-start small">Avalanche Kit</span>
+                  <small class="text-white fw-semibold">3-Antenna Beacon, Shovel & Probe</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="position-relative rounded-4 overflow-hidden shadow-sm" style="height: 180px;">
+                <img src="https://images.unsplash.com/photo-1465056836041-7f43ac27dcb5?auto=format&fit=crop&w=600&q=80" alt="Satellite SOS" class="w-100 h-100 object-fit-cover">
+                <div class="position-absolute inset-0 p-2 d-flex flex-column justify-content-end" style="background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);">
+                  <span class="badge bg-info text-dark mb-1 align-self-start small">Lifeline</span>
+                  <small class="text-white fw-semibold">Satellite Messenger & Pulse Oximeter</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Latest Innovations -->
+        <div class="mb-5">
+          <h4 class="fw-bold text-white mb-3"><i class="fa-solid fa-flask-vial text-primary me-2"></i> Latest Developments & Material Science</h4>
+          <div class="row g-4" id="innovations-container">
+            <!-- Populated by app.js -->
+          </div>
+        </div>
+
+        <!-- Golden Rules -->
+        <div class="mb-5">
+          <h4 class="fw-bold text-white mb-3"><i class="fa-solid fa-book-bookmark text-warning me-2"></i> The Five Golden Rules of High Altitude</h4>
+          <div class="row g-3" id="golden-rules-container">
+            <!-- Populated by app.js -->
+          </div>
+        </div>
+
+        <!-- Distress Signal Banner -->
+        <div class="card card-alpine p-4 mb-5 border-warning border-opacity-50 bg-opacity-25">
+          <div class="row align-items-center gy-3">
+            <div class="col-md-2 text-center">
+              <i class="fa-solid fa-bullhorn text-warning fa-3x"></i>
+            </div>
+            <div class="col-md-10">
+              <h5 class="fw-bold text-white mb-2">The International Alpine Distress Signal</h5>
+              <p class="text-white-80 small mb-2">
+                <strong>Distress Signal:</strong> Produce <strong>6 signals</strong> (whistle blasts, torch flashes, or wave arms) spaced equally within 1 minute. Pause for 1 minute in complete silence. Repeat the sequence continuously until acknowledged.
+              </p>
+              <p class="text-white-80 small mb-0">
+                <strong>Search & Rescue Acknowledgment:</strong> Rescuers respond with <strong>3 signals</strong> in 1 minute, followed by 1 minute pause.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Gear Checklist -->
+        <div class="card card-alpine p-4 p-md-5">
+          <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+            <div>
+              <h4 class="fw-bold text-white mb-1"><i class="fa-solid fa-clipboard-check text-primary me-2"></i> High-Altitude Mandatory Gear Checklist</h4>
+              <small class="text-white-50">Verify your technical and personal equipment before approaching Basecamp.</small>
+            </div>
+            <div class="text-end">
+              <div class="badge bg-primary text-white fs-6 px-3 py-2 mb-1" id="checklist-progress-text">0 / 12 Items Verified (0%)</div>
+            </div>
+          </div>
+
+          <div class="progress mb-4" style="height: 10px; background-color: rgba(255,255,255,0.1);">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" id="checklist-progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+
+          <div class="row g-2" id="gear-checklist-container">
+            <!-- Populated by app.js -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         SPA VIEW 9: EXPEDITIONS & BOOKING STUDIO
+         ============================================================ -->
+    <div class="spa-view" id="view-booking">
+      <div class="view-header-banner">
+        <div class="view-header-banner-bg"></div>
+        <div class="container">
+          <div class="view-breadcrumb">
+            <a onclick="switchSpaView('view-home')">Home</a> <i class="fa-solid fa-chevron-right fa-xs"></i> <span>Expedition Reservation</span>
+          </div>
+          <h1 class="text-white fw-bold mb-2">Expedition Booking Studio</h1>
+          <p class="text-white-70 mb-0">Select your peak, customize guide ratios, configure high-altitude equipment rentals, and receive your official Expedition Pass.</p>
+        </div>
+      </div>
+
+      <div class="container pb-5">
+        <div class="booking-box-container p-4 p-md-5 text-white">
+          <div class="row gy-4">
+            
+            <!-- Left: Reservation Form -->
+            <div class="col-lg-7">
+              <div class="d-flex align-items-center gap-2 mb-3">
+                <span class="badge bg-primary rounded-circle p-2"><i class="fa-solid fa-clipboard-list"></i></span>
+                <h4 class="fw-bold mb-0 text-white">Expedition Reservation Application</h4>
+              </div>
+              <p class="text-white-50 small mb-4">Complete the technical reservation form below to calculate your package and generate your official clearance permit.</p>
+
+              <!-- Dynamic Authentication & Profile Link Banner -->
+              <div id="booking-auth-banner" class="mb-4"></div>
+
+              <form id="expedition-booking-form" novalidate>
+                
+                <!-- 1. Select Expedition -->
+                <div class="mb-3">
+                  <label for="booking-expedition-select" class="form-label small fw-bold text-primary">1. Select Target Peak / Expedition</label>
+                  <select class="form-select form-select-alpine" id="booking-expedition-select" required>
+                    <!-- Populated by booking.js -->
+                  </select>
+                </div>
+
+                <!-- 2. Climber Counts & Season -->
+                <div class="row g-3 mb-3">
+                  <div class="col-sm-6">
+                    <label for="booking-climbers-count" class="form-label small fw-bold text-white-70">Party Size (Number of Climbers)</label>
+                    <input type="number" class="form-control form-control-alpine" id="booking-climbers-count" min="1" max="10" value="1" required>
+                  </div>
+                  <div class="col-sm-6">
+                    <label for="booking-departure-date" class="form-label small fw-bold text-white-70">Preferred Departure Window</label>
+                    <input type="date" class="form-control form-control-alpine" id="booking-departure-date" required>
+                  </div>
+                </div>
+
+                <!-- 3. Guide Ratio & Support Tier -->
+                <div class="mb-4">
+                  <label class="form-label small fw-bold text-white-70 d-block mb-2">2. Guide Ratio & Support Tier</label>
+                  <div class="row g-2">
+                    <div class="col-md-4">
+                      <div class="form-check p-3 rounded-3 booking-option-card border h-100">
+                        <input class="form-check-input" type="radio" name="guide-ratio-tier" id="tierStandard" value="0" data-name="Standard Team (2:1 Ratio)" checked>
+                        <label class="form-check-label small d-block" for="tierStandard">
+                          <strong class="d-block text-white">Standard (2:1)</strong>
+                          <span class="text-white-50">Included in base</span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-check p-3 rounded-3 booking-option-card border h-100">
+                        <input class="form-check-input" type="radio" name="guide-ratio-tier" id="tierPrivate" value="3500" data-name="Private 1:1 IFMGA Guide">
+                        <label class="form-check-label small d-block" for="tierPrivate">
+                          <strong class="d-block text-white">Private (1:1)</strong>
+                          <span class="text-warning">+$3,500 / climber</span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-check p-3 rounded-3 booking-option-card border h-100">
+                        <input class="form-check-input" type="radio" name="guide-ratio-tier" id="tierElite" value="6000" data-name="Elite Lead Sirdar VIP">
+                        <label class="form-check-label small d-block" for="tierElite">
+                          <strong class="d-block text-white">Elite Lead Sirdar</strong>
+                          <span class="text-warning">+$6,000 / climber</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 4. Gear Rental Add-ons -->
+                <div class="mb-4">
+                  <label class="form-label small fw-bold text-white-70 d-block mb-2">3. Gear Rental & High-Altitude Add-ons (Per Climber)</label>
+                  <div class="row g-2">
+                    <div class="col-sm-6">
+                      <div class="form-check p-2 px-3 rounded-2 booking-option-card border">
+                        <input class="form-check-input gear-addon-checkbox" type="checkbox" id="gearSuit" value="450" data-name="8000m Down Suit & Mitts">
+                        <label class="form-check-label small text-white-80" for="gearSuit">
+                          8000m Down Suit & Mitts (+$450)
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-check p-2 px-3 rounded-2 booking-option-card border">
+                        <input class="form-check-input gear-addon-checkbox" type="checkbox" id="gearBoots" value="320" data-name="Double Boots & Crampons">
+                        <label class="form-check-label small text-white-80" for="gearBoots">
+                          Double Boots & Crampons (+$320)
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-check p-2 px-3 rounded-2 booking-option-card border">
+                        <input class="form-check-input gear-addon-checkbox" type="checkbox" id="gearSat" value="180" data-name="Satellite SOS Beacon">
+                        <label class="form-check-label small text-white-80" for="gearSat">
+                          Garmin inReach SOS Beacon (+$180)
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-check p-2 px-3 rounded-2 booking-option-card border">
+                        <input class="form-check-input gear-addon-checkbox" type="checkbox" id="gearOxy" value="1200" data-name="Summit Oxygen Mask & Regulator">
+                        <label class="form-check-label small text-white-80" for="gearOxy">
+                          TopOut Oxygen Mask + 2 Bottles (+$1,200)
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 5. Climber Details -->
+                <div class="mb-4">
+                  <label class="form-label small fw-bold text-white-70 d-block mb-2">4. Climber Information & Experience</label>
+                  <div class="row g-3">
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control form-control-alpine" id="booking-full-name" placeholder="Full Legal Name" required>
+                    </div>
+                    <div class="col-sm-6">
+                      <input type="email" class="form-control form-control-alpine" id="booking-email" placeholder="Email Address" required>
+                    </div>
+                    <div class="col-sm-6">
+                      <input type="tel" class="form-control form-control-alpine" id="booking-phone" placeholder="Phone Number" required>
+                    </div>
+                    <div class="col-sm-6">
+                      <select class="form-select form-select-alpine" id="booking-experience-level" required>
+                        <option value="intermediate">Experience: Intermediate (Glacier/5000m)</option>
+                        <option value="advanced">Experience: Advanced (Denali/Aconcagua)</option>
+                        <option value="expert">Experience: Expert (8000m/Technical Alpinist)</option>
+                      </select>
+                    </div>
+                    <div class="col-12">
+                      <input type="text" class="form-control form-control-alpine" id="booking-emergency-contact" placeholder="Emergency Contact Name & Phone" required>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-check mb-4">
+                  <input class="form-check-input" type="checkbox" id="booking-terms" required>
+                  <label class="form-check-label small text-white-50" for="booking-terms">
+                    I certify that I am in robust cardiovascular health and will submit medical clearance 60 days before the expedition departure.
+                  </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg rounded-pill w-100 fw-bold btn-shimmer shadow-lg">
+                  <i class="fa-solid fa-passport me-2"></i> Confirm Reservation & Generate Expedition Pass
+                </button>
+
+              </form>
+            </div>
+
+            <!-- Right: Selected Expedition Preview & Dynamic Cost Summary -->
+            <div class="col-lg-5">
+              <div id="selected-expedition-preview" class="mb-4">
+                <!-- Populated by booking.js -->
+              </div>
+
+              <!-- Price Breakdown Summary Box -->
+              <div class="card card-alpine p-4 border-primary border-opacity-50">
+                <h5 class="fw-bold text-white mb-3 border-bottom border-secondary border-opacity-25 pb-2">
+                  <i class="fa-solid fa-receipt text-warning me-2"></i> Live Cost Calculation
+                </h5>
+                
+                <div class="d-flex justify-content-between mb-2 small text-white-70">
+                  <span>Base Expedition Fee:</span>
+                  <strong id="calc-base-price" class="text-white">$48,500</strong>
+                </div>
+
+                <div class="d-flex justify-content-between mb-2 small text-white-70">
+                  <span>Guide Ratio Tier:</span>
+                  <strong id="calc-guide-price" class="text-white">Included</strong>
+                </div>
+
+                <div class="d-flex justify-content-between mb-2 small text-white-70">
+                  <span>Selected Equipment Rentals:</span>
+                  <strong id="calc-gear-price" class="text-white">$0</strong>
+                </div>
+
+                <div class="d-flex justify-content-between mb-3 small text-white-70">
+                  <span>National Park & Conservation Permit:</span>
+                  <strong id="calc-permit-price" class="text-white">$3,880</strong>
+                </div>
+
+                <div class="border-top border-secondary border-opacity-50 pt-3 d-flex justify-content-between align-items-center">
+                  <div>
+                    <small class="text-white-50 d-block">Estimated Total</small>
+                    <h3 id="calc-grand-total" class="fw-bold text-success mb-0">$52,380</h3>
+                  </div>
+                  <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-2">
+                    <i class="fa-solid fa-shield me-1"></i> Full Refund Window
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ============================================================
+       CONTINUOUS SCROLLING BOTTOM TICKER (DATE, TIME & GEOLOCATION)
+       ============================================================ -->
+  <aside class="alpine-bottom-ticker" aria-label="Live Telemetry Ticker">
+    <div class="ticker-lead-label">
+      <i class="fa-solid fa-tower-broadcast"></i>
+      <span>LIVE TELEMETRY</span>
+    </div>
+    
+    <div class="ticker-marquee-track">
+      <!-- Item: Date -->
+      <div class="ticker-item">
+        <i class="fa-regular fa-calendar"></i>
+        <span>Date: <strong id="ticker-live-date">Wed, Oct 7, 2026</strong></span>
+      </div>
+
+      <!-- Item: Time -->
+      <div class="ticker-item">
+        <i class="fa-regular fa-clock"></i>
+        <span>UTC Clock: <strong id="ticker-live-time">10:33:45</strong></span>
+      </div>
+
+      <!-- Item: Geolocation -->
+      <div class="ticker-item">
+        <i class="fa-solid fa-location-crosshairs text-warning"></i>
+        <span>Current Location: <strong id="ticker-live-location">Locating via HTML5 GPS Satellites...</strong></span>
+      </div>
+
+      <!-- Item: Weather Advisory -->
+      <div class="ticker-item">
+        <i class="fa-solid fa-snowflake text-info"></i>
+        <span>Everest South Col: <strong>-26°C | Winds 18 kts | Summit Window Open</strong></span>
+      </div>
+
+      <!-- Item: High Camp Status -->
+      <div class="ticker-item">
+        <i class="fa-solid fa-campground text-success"></i>
+        <span>Denali High Camp (17,200ft): <strong>Clear Skies | Ridge Conditions Stable</strong></span>
+      </div>
+
+      <!-- Item: Avalanche Advisory -->
+      <div class="ticker-item">
+        <i class="fa-solid fa-triangle-exclamation text-danger"></i>
+        <span>Chamonix Mont-Blanc: <strong>Avalanche Hazard Level 2 (Moderate) | Goûter Open</strong></span>
+      </div>
+
+      <!-- Duplicate for seamless infinite marquee loop -->
+      <div class="ticker-item">
+        <i class="fa-regular fa-calendar"></i>
+        <span>Date: <strong>Wed, Oct 7, 2026</strong></span>
+      </div>
+
+      <div class="ticker-item">
+        <i class="fa-solid fa-location-crosshairs text-warning"></i>
+        <span>GPS Satellites Linked & Monitored</span>
+      </div>
+
+      <div class="ticker-item">
+        <i class="fa-solid fa-snowflake text-info"></i>
+        <span>Matterhorn Hörnli Ridge: <strong>Dry Granite | Excellent Friction</strong></span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       CLEAN FOOTER
+       ============================================================ -->
+  <footer class="pt-5 pb-4 bg-dark border-top border-secondary border-opacity-25 text-white-50">
+    <div class="container">
+      <div class="row g-4 mb-4">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <img src="assets/images/logo.jpg" alt="Alpine Ascents" class="rounded-circle" style="width: 36px; height: 36px;">
+            <h5 class="fw-bold text-white mb-0">ALPINE ASCENTS</h5>
+          </div>
+          <p class="small text-white-70 mb-3">
+            Setting guiding standards in the international climbing community. Offering climbers at all levels the opportunity to achieve their personal aspirations through quality, challenging, safe, and fun expeditions.
+          </p>
+          <div class="d-flex gap-2">
+            <a href="https://facebook.com" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary rounded-circle" style="width: 36px; height: 36px;"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary rounded-circle" style="width: 36px; height: 36px;"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://youtube.com" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary rounded-circle" style="width: 36px; height: 36px;"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://x.com" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary rounded-circle" style="width: 36px; height: 36px;"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h6 class="text-white fw-bold mb-3">SPA Activities</h6>
+          <ul class="list-unstyled small mb-0">
+            <li class="mb-2"><a class="text-white-50 hover-text-primary cursor-pointer" onclick="switchSpaView('view-home')">Home Portal</a></li>
+            <li class="mb-2"><a class="text-white-50 hover-text-primary cursor-pointer" onclick="switchSpaView('view-history')">History</a></li>
+            <li class="mb-2"><a class="text-white-50 hover-text-primary cursor-pointer" onclick="switchSpaView('view-disciplines')">Disciplines</a></li>
+            <li class="mb-2"><a class="text-white-50 hover-text-primary cursor-pointer" onclick="switchSpaView('view-records')">World Records</a></li>
+            <li class="mb-2"><a class="text-white-50 hover-text-primary cursor-pointer" onclick="switchSpaView('view-map')">Clubs Map</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h6 class="text-white fw-bold mb-3">Expeditions</h6>
+          <ul class="list-unstyled small mb-0">
+            <li class="mb-2"><a class="text-white-50 hover-text-primary cursor-pointer" onclick="switchSpaView('view-camps')">Success Stories</a></li>
+            <li class="mb-2"><a class="text-white-50 hover-text-primary cursor-pointer" onclick="switchSpaView('view-gallery')">Photo Gallery</a></li>
+            <li class="mb-2"><a class="text-white-50 hover-text-primary cursor-pointer" onclick="switchSpaView('view-safety')">Gear & Safety</a></li>
+            <li class="mb-2"><a class="text-white-50 hover-text-primary cursor-pointer" onclick="switchSpaView('view-booking')">Booking Studio</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4">
+          <h6 class="text-white fw-bold mb-3">Alpine Basecamp Headquarters</h6>
+          <p class="small text-white-70 mb-2"><i class="fa-solid fa-location-dot text-danger me-2"></i> 109 W John St, Seattle, WA 98119, USA</p>
+          <p class="small text-white-70 mb-2"><i class="fa-solid fa-phone text-primary me-2"></i> +1 (206) 378-1427</p>
+          <p class="small text-white-70 mb-3"><i class="fa-solid fa-envelope text-warning me-2"></i> climb@alpineascents.com</p>
+          <div class="p-2 bg-dark-subtle rounded-3 text-center small text-white-50 border border-secondary border-opacity-25">
+            Member of UIAA & American Mountain Guides Association (AMGA)
+          </div>
+        </div>
+      </div>
+
+      <div class="border-top border-secondary border-opacity-25 pt-3 d-flex flex-wrap justify-content-between align-items-center small">
+        <p class="mb-0">&copy; 2026 Alpine Ascents International. Single Page Application Architecture.</p>
+        <p class="mb-0">Built for mountaineers worldwide with responsive HTML5, CSS3, JS & Bootstrap.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       MODAL 1: AUTHENTICATION (LOGIN & SIGNUP)
+       ============================================================ -->
+  <div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content modal-alpine border-primary border-opacity-50 rounded-4 shadow-lg overflow-hidden">
+        
+        <div class="modal-header border-secondary border-opacity-25 pb-0">
+          <ul class="nav nav-tabs card-header-tabs w-100 border-0" id="authTabs" role="tablist">
+            <li class="nav-item flex-fill text-center" role="presentation">
+              <button class="nav-link active fw-bold w-100 py-3 border-0 bg-transparent" id="login-tab" data-bs-toggle="tab" data-bs-target="#login-tab-pane" type="button" role="tab" aria-controls="login-tab-pane" aria-selected="true">
+                <i class="fa-solid fa-arrow-right-to-bracket me-1"></i> Sign In
+              </button>
+            </li>
+            <li class="nav-item flex-fill text-center" role="presentation">
+              <button class="nav-link fw-bold w-100 py-3 border-0 bg-transparent" id="signup-tab" data-bs-toggle="tab" data-bs-target="#signup-tab-pane" type="button" role="tab" aria-controls="signup-tab-pane" aria-selected="false">
+                <i class="fa-solid fa-user-plus me-1"></i> Create Climber
+              </button>
+            </li>
+          </ul>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body p-4">
+          <div class="tab-content" id="authTabContent">
+            
+            <!-- Login Tab -->
+            <div class="tab-pane fade show active" id="login-tab-pane" role="tabpanel" aria-labelledby="login-tab" tabindex="0">
+              <form id="loginForm">
+                <div class="mb-3">
+                  <label for="loginEmail" class="form-label small fw-semibold text-white-70">Email Address</label>
+                  <input type="email" class="form-control form-control-alpine" id="loginEmail" placeholder="climber@alpineascents.com" required>
+                </div>
+                <div class="mb-3">
+                  <label for="loginPassword" class="form-label small fw-semibold text-white-70">Password</label>
+                  <div class="input-group">
+                    <input type="password" class="form-control form-control-alpine" id="loginPassword" placeholder="••••••••" required>
+                    <button class="btn btn-outline-secondary border-secondary" type="button" id="btn-toggle-password">
+                      <i class="fa-solid fa-eye"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="rememberMe" checked>
+                    <label class="form-check-label small text-white-50" for="rememberMe">Remember Session</label>
+                  </div>
+                  <a href="#" class="small text-primary" onclick="alert('Password reset instructions dispatched to your email.'); return false;">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 rounded-pill py-2 fw-bold mb-3">
+                  Sign In to Portal
+                </button>
+
+                <div class="d-grid">
+                  <button type="button" class="btn btn-outline-warning btn-sm rounded-pill" id="btn-autofill-demo">
+                    <i class="fa-solid fa-wand-magic-sparkles me-1"></i> Autofill Demo Alpinist Credentials
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Signup Tab -->
+            <div class="tab-pane fade" id="signup-tab-pane" role="tabpanel" aria-labelledby="signup-tab" tabindex="0">
+              <form id="signupForm" novalidate>
+                <div class="mb-3">
+                  <label for="signupName" class="form-label small fw-semibold text-white-70">Full Name</label>
+                  <input type="text" class="form-control form-control-alpine" id="signupName" placeholder="Alex Mercer" required autocomplete="name">
+                  <div class="text-danger small mt-1 d-none" id="signupNameError">
+                    <i class="fa-solid fa-triangle-exclamation me-1"></i> Numbers are not allowed in name. Only alphabetic letters and spaces are permitted.
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="signupEmail" class="form-label small fw-semibold text-white-70">Email Address</label>
+                  <input type="email" class="form-control form-control-alpine" id="signupEmail" placeholder="alex@example.com" required>
+                </div>
+                <div class="mb-3">
+                  <label for="signupExperience" class="form-label small fw-semibold text-white-70">Climbing Background</label>
+                  <select class="form-select form-select-alpine" id="signupExperience" required>
+                    <option value="Novice">Novice / Hill Walker</option>
+                    <option value="Intermediate" selected>Intermediate (Glacier & 4000m summits)</option>
+                    <option value="Advanced">Advanced (Denali / Aconcagua)</option>
+                    <option value="Elite">Elite 8,000m Veteran</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="signupPassword" class="form-label small fw-semibold text-white-70">Create Password</label>
+                  <input type="password" class="form-control form-control-alpine" id="signupPassword" placeholder="Minimum 8 characters" required>
+                </div>
+
+                <!-- Choose Profile Picture in Signup -->
+                <div class="mb-3">
+                  <label class="form-label small fw-semibold text-white-70 d-flex justify-content-between align-items-center mb-1">
+                    <span>Profile Photo</span>
+                    <span class="text-white-50" style="font-size: 0.75rem;">Upload or pick preset</span>
+                  </label>
+                  
+                  <div class="d-flex align-items-center gap-3 p-2 rounded-3 border border-secondary border-opacity-25 mb-2" style="background: rgba(255,255,255,0.03);">
+                    <div class="position-relative">
+                      <img id="signupAvatarPreview" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Preview" class="rounded-circle border border-2 border-primary" style="width: 50px; height: 50px; object-fit: cover;">
+                      <label for="signupAvatarFileInput" class="badge bg-primary text-dark rounded-circle position-absolute bottom-0 end-0 p-1 cursor-pointer" title="Upload from device" style="cursor: pointer;">
+                        <i class="fa-solid fa-camera fa-xs"></i>
+                      </label>
+                    </div>
+                    <div class="flex-grow-1">
+                      <input type="file" id="signupAvatarFileInput" accept="image/*" class="d-none" onchange="handleSignupAvatarFile(event)">
+                      <input type="hidden" id="selectedSignupAvatar" value="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80">
+                      <button type="button" class="btn btn-outline-light btn-sm rounded-pill px-3 py-1 fw-semibold" onclick="document.getElementById('signupAvatarFileInput').click()">
+                        <i class="fa-solid fa-cloud-arrow-up me-1"></i> Upload Photo
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="d-flex align-items-center gap-2 flex-wrap">
+                    <button type="button" class="avatar-preset-btn active-preset" onclick="selectSignupPreset('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80', this)" title="Alpinist 1">
+                      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Preset 1">
+                    </button>
+                    <button type="button" class="avatar-preset-btn" onclick="selectSignupPreset('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80', this)" title="Alpinist 2">
+                      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Preset 2">
+                    </button>
+                    <button type="button" class="avatar-preset-btn" onclick="selectSignupPreset('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80', this)" title="Alpinist 3">
+                      <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="Preset 3">
+                    </button>
+                    <button type="button" class="avatar-preset-btn" onclick="selectSignupPreset('https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80', this)" title="Alpinist 4">
+                      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Preset 4">
+                    </button>
+                    <button type="button" class="avatar-preset-btn" onclick="selectSignupPreset('https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=200&q=80', this)" title="Alpinist 5">
+                      <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=200&q=80" alt="Preset 5">
+                    </button>
+                    <button type="button" class="avatar-preset-btn" onclick="selectSignupPreset('https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80', this)" title="Alpinist 6">
+                      <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80" alt="Preset 6">
+                    </button>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-success w-100 rounded-pill py-2 fw-bold">
+                  Create Mountaineering Account
+                </button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL: ALPINIST PROFILE & BOOKED CLIMBS
+       ============================================================ -->
+  <div class="modal fade" id="userProfileModal" tabindex="-1" aria-labelledby="userProfileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content modal-alpine border-primary border-opacity-50 rounded-4 shadow-lg overflow-hidden">
+        
+        <div class="modal-header border-secondary border-opacity-25 py-3 px-4 d-flex justify-content-between align-items-center">
+          <div class="d-flex align-items-center gap-2">
+            <span class="badge bg-primary text-dark rounded-pill p-2"><i class="fa-solid fa-id-card"></i></span>
+            <h5 class="modal-title fw-bold mb-0 text-white" id="userProfileModalLabel">Alpinist Profile & Bookings</h5>
+          </div>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body p-4" id="user-profile-content">
+          <!-- Populated dynamically by showUserProfileModal() in app.js -->
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL 2: OFFICIAL EXPEDITION PASS & BOOKING VOUCHER (PRINTABLE)
+       ============================================================ -->
+  <div class="modal fade" id="expeditionPassModal" tabindex="-1" aria-labelledby="expeditionPassModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 bg-transparent">
+        <div class="modal-body p-0" id="expedition-pass-content">
+          <!-- Dynamically Populated by booking.js -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL 3: GALLERY LIGHTBOX PREVIEW
+       ============================================================ -->
+  <div class="modal fade" id="galleryLightboxModal" tabindex="-1" aria-labelledby="galleryLightboxModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark border-secondary p-3 rounded-4 shadow-lg">
+        <div class="modal-header border-0 pb-0">
+          <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body pt-0" id="lightbox-content">
+          <!-- Dynamically Populated by app.js -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- ============================================================
+       MODAL 4: VIDEO PLAYER EMBED
+       ============================================================ -->
+  <div class="modal fade" id="videoPlayerModal" tabindex="-1" aria-labelledby="videoPlayerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark border-primary border-opacity-50 rounded-4 overflow-hidden shadow-lg">
+        <div class="modal-header border-secondary border-opacity-25">
+          <h6 class="modal-title text-white fw-bold" id="video-modal-title">Expedition Video Documentary</h6>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0">
+          <div class="ratio ratio-16x9">
+            <iframe id="video-modal-iframe" src="" title="Mountaineering Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL 5: EXPEDITION QUICK SEARCH (CMD+K)
+       ============================================================ -->
+  <div class="modal fade" id="quickSearchModal" tabindex="-1" aria-labelledby="quickSearchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content rounded-4 overflow-hidden shadow-lg p-3" style="background: rgba(14, 9, 21, 0.96) !important; backdrop-filter: blur(24px); border: 1px solid var(--alpine-border) !important;">
+        <div class="modal-header border-0 pb-2">
+          <div class="input-group input-group-lg border border-secondary border-opacity-50 rounded-pill px-3 py-1 bg-black bg-opacity-40 w-100 align-items-center">
+            <i class="fa-solid fa-magnifying-glass text-primary me-2"></i>
+            <input type="text" class="form-control bg-transparent border-0 text-white shadow-none ps-0" id="quickSearchInput" placeholder="Search peaks, expeditions, history, records, gear..." autocomplete="off">
+            <span class="badge bg-secondary bg-opacity-25 text-white-50 small rounded-pill px-2 py-1">ESC</span>
+          </div>
+        </div>
+        <div class="modal-body pt-2" style="max-height: 420px; overflow-y: auto;">
+          <div class="d-flex align-items-center justify-content-between mb-2 px-1">
+            <small class="text-white-50 text-uppercase fw-bold" style="font-size: 0.7rem; letter-spacing: 0.1em;">Quick Suggestions</small>
+            <small class="text-white-50" id="search-results-counter">Type to search</small>
+          </div>
+          <div id="quickSearchResults" class="d-flex flex-column gap-2">
+            <a class="dropdown-item-alpine rounded-3 p-2 cursor-pointer" onclick="switchSpaView('view-records'); bootstrap.Modal.getInstance(document.getElementById('quickSearchModal')).hide();">
+              <span class="item-icon"><i class="fa-solid fa-trophy"></i></span>
+              <div>
+                <span class="item-title">World Records & 8,000m Summits</span>
+                <span class="item-desc">Fastest ascents, first winter peaks, and legendary feats</span>
+              </div>
+            </a>
+            <a class="dropdown-item-alpine rounded-3 p-2 cursor-pointer" onclick="switchSpaView('view-map'); bootstrap.Modal.getInstance(document.getElementById('quickSearchModal')).hide();">
+              <span class="item-icon"><i class="fa-solid fa-map-location-dot"></i></span>
+              <div>
+                <span class="item-title">Interactive Mountain Map & Clubs</span>
+                <span class="item-desc">Everest, K2, Denali, Matterhorn GPS coordinates</span>
+              </div>
+            </a>
+            <a class="dropdown-item-alpine rounded-3 p-2 cursor-pointer" onclick="switchSpaView('view-disciplines'); bootstrap.Modal.getInstance(document.getElementById('quickSearchModal')).hide();">
+              <span class="item-icon"><i class="fa-solid fa-layer-group"></i></span>
+              <div>
+                <span class="item-title">Alpinism Disciplines & Safety Skills</span>
+                <span class="item-desc">Alpine style, crevasse extraction, ice climbing essentials</span>
+              </div>
+            </a>
+            <a class="dropdown-item-alpine rounded-3 p-2 cursor-pointer" onclick="switchSpaView('view-booking'); bootstrap.Modal.getInstance(document.getElementById('quickSearchModal')).hide();">
+              <span class="item-icon"><i class="fa-solid fa-calendar-check"></i></span>
+              <div>
+                <span class="item-title">Expedition Booking Studio</span>
+                <span class="item-desc">Reserve guided climbs to Denali, Mont Blanc, and Everest</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       TOAST NOTIFICATION CONTAINER
+       ============================================================ -->
+  <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1090;">
+    <div id="alpineLiveToast" class="toast align-items-center text-white bg-dark border-primary shadow-lg" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body small" id="alpineToastBody">
+          Welcome to Alpine Ascents International.
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SCRIPTS
+       ============================================================ -->
+  <!-- Bootstrap 5.3.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Leaflet JS for Global Mountain Map -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Application Logic Modules -->
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/map.js"></script>
+  <script src="assets/js/booking.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/enhancements.js"></script>
+
+</body>
+</html>
